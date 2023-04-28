@@ -1,0 +1,251 @@
+.parent::-webkit-scrollbar {
+  background-color: #f5f5f5;
+  height: 100px;
+  border-radius: 6px;
+}
+
+.select {
+  text-decoration: underline rgba(242, 5, 5, 0.7);
+}
+
+.btn-card {
+  width: 42px;
+  height: 42px;
+  border: 2px solid #32363B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.actived {
+  border-bottom: none;
+}
+
+.borderteste:hover {
+  border: 3px solid rgb(242, 5, 5)
+}
+
+.text {
+  color: #FFFFFF;
+  min-width: 120px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 2px 2px 2px #32363B;
+}
+
+.move{
+  width: 200px;
+  text-transform: capitalize;
+  justify-content: left;
+}
+
+.infoContainer {
+  display: flex;
+}
+
+.div1,
+.div2 {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  transition: background-image 0s ease;
+}
+
+.div1 {
+  background-color: '#74BD74';
+  background-image: linear-gradient(to top, #74BD74, #85DE8C);
+}
+
+.div2 {
+  background-image: linear-gradient(to top, #85DE8C, #74BD74);
+}
+
+.hover-disabled {
+  pointer-events: none;
+  cursor: copy;
+}
+
+.type-bug {
+  background-color: rgb(143, 191, 44);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-dark {
+  background-color: rgb(88, 83, 98);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-dragon {
+  background-color: rgb(9, 109, 195);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-electric {
+  background-color: rgb(242, 197, 61);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-fairy {
+  background-color: rgb(235, 142, 230);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-fighting {
+  background-color: rgb(216, 58, 106);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-fire {
+  background-color: rgb(253, 157, 80);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-flying {
+  background-color: rgb(145, 168, 218);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-ghost {
+  background-color: rgb(75, 104, 170);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-grass {
+  background-color: rgb(100, 186, 95);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-ground {
+  background-color: rgb(199, 180, 138);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-ice {
+  background-color: rgb(116, 203, 194);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-normal {
+  background-color: rgb(144, 156, 159);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-poison {
+  background-color: rgb(171, 105, 202);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-psychic {
+  background-color: rgb(245, 114, 120);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-rock {
+  background-color: rgb(199, 180, 138);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-steel {
+  background-color: rgb(85, 145, 163);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.type-water {
+  background-color: rgb(78, 146, 213);
+  border-radius: 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
