@@ -1,0 +1,98 @@
+.bug:hover{
+    background-color: rgb(143, 191, 44);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.dark:hover{
+    background-color: rgb(88, 83, 98);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.dragon:hover{
+    background-color: rgb(9, 109, 195);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.electric:hover{
+    background-color: rgb(242, 197, 61);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.fairy:hover{
+    background-color: rgb(235, 142, 230);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.fighting:hover{
+    background-color: rgb(216, 58, 106);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.fire:hover{
+    background-color: rgb(253, 157, 80);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.flying:hover{
+    background-color: rgb(145, 168, 218);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.ghost:hover{
+    background-color: rgb(75, 104, 170);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.grass:hover{
+    background-color: rgb(100, 186, 95);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.ground:hover{
+    background-color: rgb(199, 180, 138);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.ice:hover{
+    background-color: rgb(116, 203, 194);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.normal:hover{
+    background-color: rgb(144, 156, 159);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.poison:hover{
+    background-color: rgb(171, 105, 202);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.psychic:hover{
+    background-color: rgb(245, 114, 120);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.rock:hover{
+    background-color: rgb(199, 180, 138);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.steel:hover{
+    background-color: rgb(85, 145, 163);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.water:hover{
+    background-color: rgb(78, 146, 213);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.main .btn-load-more:hover{
+    background-color: rgb(19, 31, 53);
+    border-radius: 200px 70px 70px 200px;
+}
+
+.main .btn-load-more:hover > div{
+    color: white;
+}
