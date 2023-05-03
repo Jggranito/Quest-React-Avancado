@@ -8,8 +8,8 @@ export const Cards = (props) => {
             return (
                 <Link
                     key={index}
-                    to={{pathname: `/more-info/${pokemon.name}`}}
-                    state={{ pokemon: pokemon}}
+                    to={{ pathname: `/Quest-React-Avancado/more-info/${pokemon.name}` }}
+                    state={{ pokemon: pokemon }}
                     className={pokemon.types[1]}
                     style={{ height: '112px', transition: 'all 0.3s ease 0s' }}
                 >
@@ -22,11 +22,11 @@ export const Cards = (props) => {
                             <Details>
                                 <IconTypes>
                                     <IconType>
-                                        <Img src={`./types-icon/${pokemon.types[1]}.png`} alt={pokemon.types[1]}></Img>
+                                        <Img src={`/Quest-React-Avancado/types-icon/${pokemon.types[1]}.png`} alt={pokemon.types[1]}></Img>
                                     </IconType>
                                     <IconType>
                                         {pokemon.types[2] !== "" && (
-                                            <Img src={`./types-icon/${pokemon.types[2]}.png`} alt={pokemon.types[2]} />
+                                            <Img src={`/Quest-React-Avancado/types-icon/${pokemon.types[2]}.png`} alt={pokemon.types[2]} />
                                         )}
                                     </IconType>
                                 </IconTypes>
@@ -64,10 +64,19 @@ const InfoPokeCard = styled.div`
 `;
 
 const Name = styled.p`
+    @font-face {
+        font-family: 'Open Sans';
+        src: url('/Quest-React-Avancado/font/pokemon-dp-pro.ttf') format('truetype');
+    }
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: #F8F8F8;
+    font-size: 24px;
+    text-shadow: 1px 1px 4px #32363B;
     width: 120px;
     font-weight: 600;
     margin-bottom: 7px;
     text-transform: capitalize;
+    letter-spacing: 1px;
 `;
 
 const Details = styled.div`
@@ -95,6 +104,14 @@ const Img = styled.img`
 `;
 
 const PokeIdPokemon = styled.p`
-    font-size: 14px;
     align-self: flex-end;
+    @font-face {
+        font-family: 'Open Sans';
+        src: url('/Quest-React-Avancado/font/pokemon-dp-pro.ttf') format('truetype');
+    }
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: #F8F8F8;
+    font-size: 20px;
+    text-shadow: 1px 1px 4px #32363B;
+    letter-spacing: 2px
 `;

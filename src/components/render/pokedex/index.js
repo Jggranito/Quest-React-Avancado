@@ -24,13 +24,13 @@ export function Pokedex() {
 
     return (
         <BgImage>
-            <nav className='menu' style={{textAlign: 'right'}}>
-                <img src='/images/pokedex.png' alt='pokedex logo' style={{width: '300px', marginRight: '2%'}}></img>
-            </nav>
+            <Menu>
+                <PokedexLogo src='/Quest-React-Avancado/images/pokedex.png' alt='pokedex logo' />
+            </Menu>
             <Container>
                 <PokedexContainer>
                     <Border>
-                        <section className='main'>
+                        <section>
                             <PokeList>
                                 <Cards pokemons={pokemons} />
                                 <BtnLoadMore>
@@ -52,8 +52,8 @@ export function Pokedex() {
 
 export default Pokedex;
 
-const BgImage = styled.div`
-    background: url('/images/background.jpg') no-repeat center center fixed;
+export const BgImage = styled.div`
+    background: url('/Quest-React-Avancado/images/background.jpg') no-repeat center center fixed;
     background-size: cover;
     overflow: hidden;
     height: 100vh;
@@ -63,7 +63,7 @@ const BgImage = styled.div`
     justify-content: center;
 `;
 
-const Container = styled.section`
+export const Container = styled.section`
     display: flex;
     width: 100%;
     height: 100%;
@@ -72,7 +72,7 @@ const Container = styled.section`
     padding: 0 22px;
 `;
 
-const PokedexContainer = styled.div`
+export const PokedexContainer = styled.div`
     width: 100%;
     max-width: 1268px;
     height: 537px;
@@ -86,9 +86,16 @@ const PokedexContainer = styled.div`
     { 
         height: 95%;
     }
+
+    .more-info{
+        position: relative;
+        display: flex;
+        gap: 95px;
+        flex-wrap: wrap;
+    }
 `;
 
-const Border = styled.div`
+export const Border = styled.div`
     width: 100%;
     height: 100%;
     border: 2px solid rgba(255, 255, 255, 0.25);
@@ -145,3 +152,15 @@ const CirclePlus = styled.div`
 const Svg = styled.svg`
     height: 85px;
 `;
+
+const Menu = styled.nav`
+    width: 100%;
+    height: 65px;
+    background: url('/Quest-React-Avancado/images/menu.png') repeat-x ;
+    text-align: right;
+`
+
+const PokedexLogo = styled.img`
+    width: 300px;
+    margin-right: 2%;
+`

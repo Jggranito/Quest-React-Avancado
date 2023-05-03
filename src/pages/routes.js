@@ -6,8 +6,8 @@ export const AppRoutes = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route exact path='/' element={<PokedexList />} />
-                <Route path='/more-info/:name' element={<Pokemon />} />
+                <Route exact path='/Quest-React-Avancado' element={<PokedexList />} />
+                <Route path='/Quest-React-Avancado/more-info/:name' element={<Pokemon />} />
             </Routes>
         </BrowserRouter>
     )

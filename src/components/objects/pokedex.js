@@ -11,7 +11,7 @@ export const setPokedex = async (start) => {
         spriteAnimatedUrl: pokemon.sprites.versions["generation-v"]["black-white"].animated.front_default,
         spriteVIIIGen: pokemon.sprites.versions["generation-vii"].icons.front_default
       }
-      let id = '000' + pokemon.id;
+      let id = '0000' + pokemon.id;
       if (id.length > 5) {
         id = id.substring(1)
       }
