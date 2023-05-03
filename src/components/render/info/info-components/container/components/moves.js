@@ -12,7 +12,7 @@ export const Moves = (props) => {
     const [isOpen, setIsOpen] = useState(false)
 
     const handleChange = (event) => {
-        setSelectedValue(event.target.value)
+        setSelectedValue(event)
     }
 
     let sorted = false
@@ -39,14 +39,14 @@ export const Moves = (props) => {
         <Container display={display}>
             <Content>
                 <SwitchStats>
-                    <div>
+                    <MoveOriginFilter  >
                         <MainText>Moves learnt by: </MainText>
-                    </div>
-                    <MoveOriginFilter value={selectedValue} onChange={handleChange}>
-                        <option value='levelUp'>Level up</option>
-                        <option value='tm'>TM</option>
-                        <option value='egg'>Egg</option>
-                        <option value='tutor'>Tutor</option>
+                        <Options>
+                            <MainText className={(selectedValue === 'levelUp') ? "select" : "disable"} onClick={() => handleChange('levelUp')}>Level up</MainText>
+                            <MainText className={(selectedValue === 'tm') ? "select" : "disable"} onClick={() => handleChange('tm')}>TM</MainText>
+                            <MainText className={(selectedValue === 'egg') ? "select" : "disable"} onClick={() => handleChange('egg')}>Egg</MainText>
+                            <MainText className={(selectedValue === 'tutor') ? "select" : "disable"} onClick={() => handleChange('tutor')}>Tutor</MainText>
+                        </Options>
                     </MoveOriginFilter>
                 </SwitchStats>
                 <ContentMoves>
@@ -73,7 +73,7 @@ export const Moves = (props) => {
                     </ul>
                 </ContentMoves>
             </Content>
-            <InfoMoves info={info} selectedValue={selectedValue} selectedIndex={[selectedIndex, setSelectedIndex]} isOpen={[isOpen, setIsOpen]}/>
+            <InfoMoves info={info} selectedValue={selectedValue} selectedIndex={[selectedIndex, setSelectedIndex]} isOpen={[isOpen, setIsOpen]} />
         </Container>
     )
 }
@@ -125,8 +125,30 @@ const SubText = styled.p`
     text-shadow: 1px 1px 4px #32363B;
     line-height: 42px;
 `
-const MoveOriginFilter = styled.select`
-    margin: 10px 0 0 30px;
+const MoveOriginFilter = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    border-radius: 5px;
+    color: #333333;
+    font-size: 16px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    gap: 25px;
+    cursor: default;
+`
+const Options = styled.div`
+    display: flex;
+    gap: 20px;
+    .disable{
+        cursor: pointer;
+        color: #999999;
+
+    }
+    .select{
+        text-decoration: underline #EA1C26;
+    }
 `
 const ContentMoves = styled.div`
     width: 100%;
@@ -141,11 +163,11 @@ const ContentMoves = styled.div`
 const ContainerMoves = styled.div`
     cursor: pointer;
     padding: 5px;
-    border: ${props => props.selectedIndex === props.index ? '5px solid rgb(242, 5, 5); padding: 0px;' : 'none'};
+    border: ${props => props.selectedIndex === props.index ? '5px solid rgb(234, 28, 38); padding: 0px;' : 'none'};
     :hover{
         border: none;
         padding: 5px;
-        box-shadow: inset 0 0 0 5px rgb(242, 5, 5);
+        box-shadow: inset 0 0 0 5px rgb(255, 5, 5);
     }
 `
 const TextMove = styled.div`

@@ -1,7 +1,10 @@
-.card-open {
-    display: block;
-}
 
-.card-closed {
-    display: none;
+.select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+select option {
+    border-radius: 20px;
+    height: 100px;
 }

@@ -13,8 +13,6 @@ export const InfoMoves = (props) => {
         setSelectIndex('0')
     }
 
-    console.log(isOpen, selectedIndex, selectedValue)
-
     return (
         <>
             {info.moves[selectedValue][selectedIndex] ?
