@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom"
 import styled from "styled-components"
 import { getInfo } from "../../objects/info";
 import { useEffect, useState } from "react";
-import './teste.css'
+import './types.css'
 import { InfoContainer } from "./info-components/container";
 import { PokeCard } from "./info-components/pokecard"
 import { BgImage, Container, PokedexContainer, Border } from "../pokedex";

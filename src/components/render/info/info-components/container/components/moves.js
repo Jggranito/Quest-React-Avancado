@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { useState } from "react";
-import '../..//css/style.css'
 import { TypesContainer } from "./general";
 import { InfoMoves } from "./info-moves";
 
