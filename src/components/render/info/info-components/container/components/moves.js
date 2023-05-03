@@ -37,7 +37,7 @@ export const Moves = (props) => {
 
     return (
         <Container display={display}>
-            <SwitchStatsContainer>
+            <Content>
                 <SwitchStats>
                     <div>
                         <MainText>Moves learnt by: </MainText>
@@ -53,7 +53,7 @@ export const Moves = (props) => {
                     <ul>
                         {info.moves[selectedValue].map((move, index) => (
                             <li key={index}>
-                                <ContainerMoves onClick={() => showMoveDetails(index)}>
+                                <ContainerMoves onClick={() => showMoveDetails(index)} selectedIndex={selectedIndex} index={index}>
                                     <TextMove>
                                         <TypesContainer>
                                             <MainText className={'type type-' + move.type}>{move.type}</MainText>
@@ -72,8 +72,8 @@ export const Moves = (props) => {
                         ))}
                     </ul>
                 </ContentMoves>
-            </SwitchStatsContainer>
-            <InfoMoves info={info} selectedValue={selectedValue} selectedIndex={selectedIndex} isOpen={[isOpen, setIsOpen]}/>
+            </Content>
+            <InfoMoves info={info} selectedValue={selectedValue} selectedIndex={[selectedIndex, setSelectedIndex]} isOpen={[isOpen, setIsOpen]}/>
         </Container>
     )
 }
@@ -81,7 +81,7 @@ export const Moves = (props) => {
 const Container = styled.div`
     display: ${props => props.display};
 `
-const SwitchStatsContainer = styled.div`
+const Content = styled.div`
     width: 650px;
     height: 420px;
     border-radius: 25px;
@@ -132,7 +132,7 @@ const ContentMoves = styled.div`
     width: 100%;
     height: 378px;
     overflow-y: auto;
-    -webkit-scrollbar{
+    ::-webkit-scrollbar{
         background-color: #f5f5f5;
         height: 100px;
         border-radius: 6px;
@@ -140,8 +140,12 @@ const ContentMoves = styled.div`
 `
 const ContainerMoves = styled.div`
     cursor: pointer;
+    padding: 5px;
+    border: ${props => props.selectedIndex === props.index ? '5px solid rgb(242, 5, 5); padding: 0px;' : 'none'};
     :hover{
-        border: 4px solid rgb(242, 5, 5);
+        border: none;
+        padding: 5px;
+        box-shadow: inset 0 0 0 5px rgb(242, 5, 5);
     }
 `
 const TextMove = styled.div`

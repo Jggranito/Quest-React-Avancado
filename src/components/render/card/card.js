@@ -70,10 +70,10 @@ const Name = styled.p`
     }
     font-family: 'Open Sans', Arial, sans-serif;
     color: #F8F8F8;
-    font-size: 24px;
-    text-shadow: 1px 1px 4px #32363B;
+    font-size: 30px;
+    text-shadow: 1px 1px 1px #32363B;
     width: 120px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 7px;
     text-transform: capitalize;
     letter-spacing: 1px;
@@ -112,6 +112,6 @@ const PokeIdPokemon = styled.p`
     font-family: 'Open Sans', Arial, sans-serif;
     color: #F8F8F8;
     font-size: 20px;
-    text-shadow: 1px 1px 4px #32363B;
+    text-shadow: 1px 1px 1px #32363B;
     letter-spacing: 2px
 `;

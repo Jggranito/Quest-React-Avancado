@@ -38,7 +38,7 @@ export function Pokedex() {
                                         <CirclePlus>
                                             <Svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle-plus" className="svg-circle-plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"></path></Svg>
                                         </CirclePlus>
-                                        <p>Load More</p>
+                                        <Text>Load More</Text>
                                     </Button>
                                 </BtnLoadMore>
                             </PokeList>
@@ -117,7 +117,19 @@ const PokeList = styled.ul`
         height: 540px;
     }
 `;
+const Text = styled.p`
+    @font-face {
+        font-family: 'Open Sans';
+        src: url('/Quest-React-Avancado/font/pokemon-dp-pro.ttf') format('truetype');
+    }
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: #F8F8F8;
+    font-size: 30px;
+    text-shadow: 1px 1px 1px #32363B;
+    font-weight: 500;
+    border-width: 0;
 
+`;
 const BtnLoadMore = styled.div`
     .btn-load-more {
         display: flex;
@@ -130,11 +142,11 @@ const BtnLoadMore = styled.div`
         align-items: center;
         cursor: pointer;
     }
-    p{
-        font-size: 18px;
-        font-weight: 600;
-        color: rgb(255, 255, 255);
-        border-width: 0;
+    .btn-load-more:hover{
+        background-color: #2372D9;
+    }
+    .btn-load-more:hover path{
+        color: #F8F8F8;
     }
 `
 

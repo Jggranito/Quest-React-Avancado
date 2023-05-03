@@ -4,12 +4,13 @@ import { useLocation } from "react-router-dom"
 export const InfoMoves = (props) => {
     const info = props.info
     const selectedValue = props.selectedValue
-    const selectedIndex = props.selectedIndex
+    const [selectedIndex, setSelectIndex] = props.selectedIndex
     const [isOpen, setIsOpen] = props.isOpen
     const { state: { pokemon } } = useLocation()
 
     const handleClose = () => {
         setIsOpen(false)
+        setSelectIndex('0')
     }
 
     console.log(isOpen, selectedIndex, selectedValue)
@@ -28,52 +29,45 @@ export const InfoMoves = (props) => {
                                 }
                             </TextFirtLine>
                         </FirtLineContent>
-                        <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'right' }}>
-                            <div style={{ backgroundColor: 'red', height: '35px', width: '35px', blockSize: 'border', marginRight: '50px', borderRadius: '20px', display: 'flex', alignItems: 'center', position: 'relative', cursor: 'pointer', boxShadow: '1px black' }} onClick={handleClose}>
-                                <div style={{ width: '100%', height: '5px', backgroundColor: 'white', borderRadius: '2px', rotate: '40deg' }}></div>
-                                <div style={{ width: '100%', height: '5px', backgroundColor: 'white', borderRadius: '2px', rotate: '-40deg', position: 'absolute' }}></div>
-
-                            </div>
-                        </div>
+                        <BtnCloseContainer onClick={handleClose}>
+                            <BtnClose/>
+                        </BtnCloseContainer>
                     </FirtLine>
-                    <div style={{ height: '42px', backgroundColor: '#F8C8C0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', textTransform: 'uppercase', padding: '0 30px' }}>
-                        <P className="text">category</P>
-                        <img src={"/Quest-React-Avancado/images/" + info.moves[selectedValue][selectedIndex].category + ".png"} alt="category move icon" style={{ height: '34px', borderRadius: '6px' }}></img>
-                    </div>
-                    <div style={{ height: '42px', backgroundColor: '#F0A8A0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 30px', textTransform: 'uppercase' }}>
-                        <P style={{ color: '#FFFFFF', textShadow: '2px 2px 2px #32363B' }}>power</P>
-                        <P style={{ display: 'flex', alignItems: 'center', justifyContent: 'right', height: '42px', width: '80px', backgroundColor: '#F0F8F8', paddingRight: '18px', borderRadius: '20px' }}>{info.moves[selectedValue][selectedIndex].power}</P>
-                    </div>
-                    <div style={{ height: '42px', backgroundColor: '#F8C8C0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 30px', textTransform: 'uppercase' }}>
-                        <P style={{ color: '#FFFFFF', textShadow: '2px 2px 2px #32363B' }}>accuracy</P>
-                        <P style={{ display: 'flex', alignItems: 'center', justifyContent: 'right', height: '42px', width: '80px', backgroundColor: '#F0F0C0', paddingRight: '18px', borderRadius: '20px' }}>{info.moves[selectedValue][selectedIndex].accuracy}</P>
-                    </div>
-
-                    <div style={{ height: '191px' }}>
-                        <div className='parent' style={{ height: '100%', width: '100%', overflowY: 'auto' }}>
-                            <P style={{ minHeight: '100%', width: '100%', background: 'repeating-linear-gradient( to bottom, #F0F8F8 0, #F0F8F8 42px, #E6E69E 42px, #E6E69E 84px)', padding: '0 25px 0 30px' }}>
+                    <StatsContainer>
+                        <SecontLine>
+                            <MainText>category</MainText>
+                            <CategoryIcon src={"/Quest-React-Avancado/images/" + info.moves[selectedValue][selectedIndex].category + ".png"} alt="category move icon" />
+                        </SecontLine>
+                        <ThirdLine>
+                            <MainText>power</MainText>
+                            <SubText className="bg-color">
+                                {
+                                    info.moves[selectedValue][selectedIndex].power ? info.moves[selectedValue][selectedIndex].power : "---"
+                                }
+                            </SubText>
+                        </ThirdLine>
+                        <FourthLine>
+                            <MainText>accuracy</MainText>
+                            <SubText className="bg-color">
+                                {
+                                    info.moves[selectedValue][selectedIndex].accuracy ? info.moves[selectedValue][selectedIndex].accuracy : "---"
+                                }
+                            </SubText>
+                        </FourthLine>
+                    </StatsContainer>
+                    <DescriptionContainer>
+                        <Description>
+                            <SubText style={{ minHeight: '100%', width: '100%', background: 'repeating-linear-gradient( to bottom, #F0F8F8 0, #F0F8F8 42px, #E6E69E 42px, #E6E69E 84px)', padding: '0 25px 0 30px' }}>
                                 {info.moves[selectedValue][selectedIndex].description}
-                            </P>
-                        </div>
-                    </div>
+                            </SubText>
+                        </Description>
+                    </DescriptionContainer>
                 </Container>
                 : ''
             }
         </>
     )
 }
-
-const P = styled.p`
-    @font-face {
-        font-family: 'Open Sans';
-        src: url('./font/pokemon-dp-pro.ttf') format('truetype');
-    }
-    font-family: 'Open Sans', Arial, sans-serif;
-    color: #242C35;
-    font-size: 40px;
-    text-shadow: 1px 1px 4px #32363B;
-    line-height: 42px;
-`
 const MainText = styled.p`
 @font-face {
         font-family: 'Open Sans';
@@ -93,9 +87,8 @@ const SubText = styled.p`
     }
     font-family: 'Open Sans', Arial, sans-serif;
     color: #252A30;
-    text-transform: uppercase;
     font-size: 40px;
-    text-shadow: 1px 1px 4px #32363B;
+    text-shadow: 1px 1px 3px #32363B;
     line-height: 42px;
 `
 const Container = styled.div`
@@ -107,6 +100,23 @@ const Container = styled.div`
     border-radius: 20px;
     overflow: hidden;
     display: ${props => props.display};
+`
+const StatsContainer = styled.div`
+    height: 126px;
+    background: repeating-linear-gradient(to bottom, #F8C8C0 0, #F8C8C0 42px, #F0A8A0 42px,  #F0A8A0 84px);
+    background-color: #F8C8C0;
+    text-transform: uppercase;
+    padding: 0 30px;
+    .bg-color {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        height: 42px;
+        width: 80px;
+        background-color: #F0F8F8;
+        padding-right: 18px;
+        border-radius: 20px;
+    }
 `
 const FirtLine = styled.div`
     height: 63px;
@@ -137,5 +147,54 @@ const TextFirtLine = styled.div`
         height: 40px;
         padding: 20px;
         margin-top: -2px;
+    }
+`
+const SecontLine = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`
+const CategoryIcon = styled.img`
+    height: 34px;
+    border-radius: 6px;
+`
+const ThirdLine = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`
+const FourthLine = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .bg-color{
+        background-color: #F2EFC0;
+    }
+`
+const DescriptionContainer = styled.div`
+    height: 191px;
+`
+const Description = styled.div`
+    height: 100%;
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+        background-color: #f5f5f5;
+        height: 100px;
+        border-radius: 6px;
+    }
+`
+const BtnCloseContainer = styled.div`
+    width: 40px;
+    height: 40px;
+`
+const BtnClose = styled.div`
+    width: 100%;
+    height: 100%;
+    background-image: url("/Quest-React-Avancado/images/buton-icons/close.png");
+    background-size: cover;
+    cursor: pointer;
+    transition: 0.2s ease;
+    :hover{
+        background-image: url("/Quest-React-Avancado/images/buton-icons/close-hover.png");
     }
 `
