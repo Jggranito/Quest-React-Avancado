@@ -59,6 +59,10 @@ const PokeCardContainer = styled.div`
 const CardNameContainer = styled.div`
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
     border-radius: 20px;
+    @media (max-width: 480px) {
+        margin-left: 4%;
+        width: 90%;
+    }
 `
 const CardName = styled.div`
     width: 380px;
@@ -73,6 +77,9 @@ const CardName = styled.div`
 
     .text {
         margin: 0 0 5px 8px;
+    }
+    @media (max-width: 480px) {
+        width: 100%;
     }
 `
 
@@ -106,10 +113,22 @@ const CardBgImage = styled.div`
     background-position: center;
     background-size: cover;
     z-index: -1;
+    @media (max-width: 480px) {
+        top: -5%;
+        left: 12%;
+        width: 80%;
+        height: 80%;
+    }
 `
 
 const CardImageSprite = styled.img`
     width: 200px;
     z-index: 0;
     transform: scaleX(-1);
+    @media (max-width: 480px) {
+        position: absolute;
+        top: -2%;
+        left: 17%;
+        width: 70%;
+    }
 `

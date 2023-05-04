@@ -42,7 +42,7 @@ export const MoreInfo = () => {
                             </LoadingContainer>
                             :
                             <>
-                                <PokeCard />
+                                <PokeCard/>
                                 <InfoContainer info={info}/>
                             </>
                         }
@@ -128,4 +128,8 @@ const AnimatedLoading = styled.img`
     width: 400px;
     height: 100px;
     transform: scaleX(-1);
+    @media (max-width: 480px) {
+        width: 300px;
+        height: 75px;
+    }
 `

@@ -70,6 +70,9 @@ export const Container = styled.section`
     align-items: center;
     justify-content: center;
     padding: 0 22px;
+    @media (max-width: 480px) {
+        margin-bottom: 50px;
+    }
 `;
 
 export const PokedexContainer = styled.div`
@@ -85,6 +88,7 @@ export const PokedexContainer = styled.div`
     @media (max-width: 480px) 
     { 
         height: 95%;
+        padding: 15px;
     }
 
     .more-info{
@@ -92,6 +96,10 @@ export const PokedexContainer = styled.div`
         display: flex;
         gap: 95px;
         flex-wrap: wrap;
+
+        @media screen {
+            position: static;
+        }
     }
 `;
 
@@ -102,7 +110,11 @@ export const Border = styled.div`
     border-radius: 50px;
     padding: 47px;
     transition: all 0.3s ease 0s;
-    @media (max-width: 480px) { padding: 45px 10px 0 0 };
+    @media (max-width: 480px) { 
+        padding: 15px 10px 0 0;
+        display: flex;
+        border-radius: 30px;
+    };
 `;
 
 const PokeList = styled.ul`
@@ -111,10 +123,10 @@ const PokeList = styled.ul`
     height: 410px;
     flex-wrap: wrap;
     overflow-y: scroll;
-    gap: 30px 16px;
+    gap: 25px;
     justify-content: center;
     @media (max-width: 480px) {
-        height: 540px;
+        height: 572px;
     }
 `;
 const Text = styled.p`

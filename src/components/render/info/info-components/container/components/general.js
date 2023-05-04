@@ -33,13 +33,15 @@ export const General = (props) => {
                     <SubText>{info.stats.exp}</SubText>
                 </StatsBgLine>
                 <EmpyLine />
-                <StatsBgLine >
-                    <SubText >{parseInt(info.stats.nextLevel)}</SubText>
-                </StatsBgLine>
-                <XPBarContainer >
-                    <MainText className='text'>EXP </MainText>
-                    <XPBar src='/Quest-React-Avancado/images/xp-bar2.png' alt="xp bar" />
-                </XPBarContainer>
+                <ContainerNextLevel>
+                    <StatsBgLine >
+                        <SubText >{parseInt(info.stats.nextLevel)}</SubText>
+                    </StatsBgLine>
+                    <XPBarContainer className="xp-bar">
+                        <MainText className="text">EXP </MainText>
+                        <XPBar className="xp-bar-img" src='/Quest-React-Avancado/images/xp-bar2.png' alt="xp bar" />
+                    </XPBarContainer>
+                </ContainerNextLevel>
             </StatsContainer>
         </GeneralContainer>
     )
@@ -54,6 +56,16 @@ const GeneralContainer = styled.div`
     justify-content: right;
     box-shadow: -2px -2px 0 #32363B, 2px -2px 0 #32363B, -2px 2px 0 #32363B, 2px 2px 0 #32363B;
     display: ${props => props.display};
+    @media (max-width: 480px) {
+        position: relative;
+        border-radius: 25px;
+        overflow: hidden;
+        top: 34.1%;
+        margin-left: 4%;
+        width: 175%;
+        height: 60%;
+        padding-top: 10px;
+    }
 `
 
 const TextContainer = styled.div`
@@ -76,11 +88,16 @@ const MainText = styled.p`
     color: #f8f8f8;
     font-size: 40px;
     text-shadow: 2px 2px 2px #32363B;
-    line-height: 50px;
     height: 50px;
     display: flex;
     align-items: center;
     padding-left: 40px;
+    @media (max-width: 480px) {
+        font-size: 29px;
+        padding-left: 15px;
+        height: 35px;
+        text-shadow: 1px 1px 1px #32363B;
+    }
 `
 const SubText = styled.p`
 @font-face {
@@ -92,16 +109,27 @@ const SubText = styled.p`
     text-transform: uppercase;
     font-size: 40px;
     text-shadow: 1px 1px 4px #32363B;
-    line-height: 50px;
+    height: 50px;
+    @media (max-width: 480px) {
+        font-size: 29px;
+        height: 35px;
+    }
 `
 const EmpyLine = styled.div`
     width: 100%;
     height: 50px;
+    @media (max-width: 480px){
+        height: 30px;
+    }
 `
 const StatsContainer = styled.div`
     position: absolute;
     width: 50%;
     height: 100%;
+    @media (max-width: 480px) {
+        width: 28%;
+        margin-right: 60px;
+    }
 `
 const MainStatus = styled.div`
     width: 300px;
@@ -116,12 +144,27 @@ const MainStatus = styled.div`
         padding: 20px;
         margin-top: 2px;
     }
+    @media (max-width: 480px) {
+        width: 168%;
+        height: 105px;
+        background: repeating-linear-gradient(to bottom, #F0F0C0 0, #F0F0C0 35px, #F0F8F8 35px, #F0F8F8 70px);
+
+        .type {
+            height: 28px;
+            padding: 6px;
+            margin-top: 2px;
+            font-size: 20px;
+        }
+    }
 `
 export const TypesContainer = styled.div`
     display: flex;
     justify-content: center;
     gap: 20px;
     text-transform: uppercase;
+    @media (max-width: 480px) {
+        gap: 7px;
+    }
 `
 
 const StatsBgLine = styled.div`
@@ -134,6 +177,12 @@ const StatsBgLine = styled.div`
     align-items: center;
     padding-right: 70px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
+    @media (max-width: 480px) {
+        width: 168%;
+        height: 30px;
+        margin-top: 5px;
+        padding-right: 25px;
+    }
 `
 const XPBarContainer = styled.div`
     display: flex;
@@ -145,4 +194,22 @@ const XPBarContainer = styled.div`
 const XPBar = styled.img`
     margin-right: 90px;
     width: 250px;
+`
+const ContainerNextLevel = styled.div`
+    @media (max-width: 420px) {
+        position: relative;
+        .xp-bar{
+            position: absolute;
+            bottom: 205%;
+            right: -27%;
+        }
+        .xp-bar-img{
+            width: 30%;
+            height: 12px;
+        }
+        .text {
+            text-shadow: none;
+            font-size: 25px;
+        }
+    }
 `

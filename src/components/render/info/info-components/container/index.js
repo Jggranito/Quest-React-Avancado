@@ -32,24 +32,39 @@ export const InfoContainer = (props) => {
         <Info>
             <InfoButtons>
                 <BtnGeneral className={generalButtonActived ? "actived btn-card" : "btn-card"} onClick={() => changeCard(1)}>
-                    <img src={generalButtonActived ? "/Quest-React-Avancado/images/buton-icons/general-actived.png" : "/Quest-React-Avancado/images/buton-icons/general.png"} alt="ads" style={{ width: '65%' }}></img>
+                    <BtnIcon src={generalButtonActived ? "/Quest-React-Avancado/images/buton-icons/general-actived.png" : "/Quest-React-Avancado/images/buton-icons/general.png"} alt="general"></BtnIcon>
                 </BtnGeneral>
                 <BtnStats className={statsButtonActived ? "actived btn-card" : "btn-card"} onClick={() => changeCard(2)}>
-                    <img src={statsButtonActived ? "/Quest-React-Avancado/images/buton-icons/stats-actived.png" : "/Quest-React-Avancado/images/buton-icons/stats.png"} alt="ads" style={{ width: '65%' }}></img>
+                    <BtnIcon src={statsButtonActived ? "/Quest-React-Avancado/images/buton-icons/stats-actived.png" : "/Quest-React-Avancado/images/buton-icons/stats.png"} alt="status"></BtnIcon>
                 </BtnStats>
                 <BtnMoves className={movesButtonActived ? "actived btn-card" : "btn-card"} onClick={() => changeCard(3)}>
-                    <img src={movesButtonActived ? "/Quest-React-Avancado/images/buton-icons/moves-actived.png" : "/Quest-React-Avancado/images/buton-icons/moves.png"} alt="ads" style={{ width: '65%' }}></img>
+                    <BtnIcon src={movesButtonActived ? "/Quest-React-Avancado/images/buton-icons/moves-actived.png" : "/Quest-React-Avancado/images/buton-icons/moves.png"} alt="moves"></BtnIcon>
                 </BtnMoves>
             </InfoButtons>
-            <General info={info} display={generalDisplay} />
+            <Container>
+                <General info={info} display={generalDisplay} />
+            </Container>
+            
             <Stats info={info} display={statsDisplay} />
             <Moves info={info} display={movesDisplay} />
         </Info>
     )
 }
 
+const Container = styled.div`
+    position: relative;
+    @media (max-width: 480px){
+        width: 56.5%;
+        height: 72.5%;
+    }
+`
+
 const Info = styled.div`
     position: relative;
+    @media (max-width: 480px){
+        width: 100%;
+        height: 100%;
+    }
 `
 const InfoButtons = styled.div`
     display: flex;
@@ -71,6 +86,26 @@ const InfoButtons = styled.div`
     .actived {
         border-bottom: none;
     }
+    @media (max-width: 480px) {
+        position: relative;
+        top: 24.7%;
+        .btn-card {
+            width: 32px;
+            height: 28px;
+            border: 2px solid #32363B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+        .actived {
+            border-bottom: none;
+        }
+    }
+`
+const BtnIcon = styled.img`
+    width: 65%;
 `
 const BtnGeneral = styled.div`
     background-color: #85DE8C;
