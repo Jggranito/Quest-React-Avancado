@@ -58,12 +58,12 @@ const GeneralContainer = styled.div`
     display: ${props => props.display};
     @media (max-width: 480px) {
         position: relative;
-        border-radius: 25px;
+        border-radius: 30px;
         overflow: hidden;
         top: 34.1%;
         margin-left: 4%;
-        width: 175%;
-        height: 60%;
+        width: 95%;
+        height: 62%;
         padding-top: 10px;
     }
 `
@@ -108,7 +108,7 @@ const SubText = styled.p`
     color: #252A30;
     text-transform: uppercase;
     font-size: 40px;
-    text-shadow: 1px 1px 4px #32363B;
+    text-shadow: 2px 2px 3px #BCBCBC;
     height: 50px;
     @media (max-width: 480px) {
         font-size: 29px;
@@ -197,19 +197,18 @@ const XPBar = styled.img`
 `
 const ContainerNextLevel = styled.div`
     @media (max-width: 420px) {
-        position: relative;
         .xp-bar{
-            position: absolute;
-            bottom: 205%;
-            right: -27%;
+            display: flex;
+            justify-content: flex-start;
         }
         .xp-bar-img{
-            width: 30%;
+            width: 39%;
             height: 12px;
         }
         .text {
             text-shadow: none;
             font-size: 25px;
+            margin-left: -13%;
         }
     }
 `

@@ -28,7 +28,7 @@ export const InfoMoves = (props) => {
                             </TextFirtLine>
                         </FirtLineContent>
                         <BtnCloseContainer onClick={handleClose}>
-                            <BtnClose/>
+                            <BtnClose />
                         </BtnCloseContainer>
                     </FirtLine>
                     <StatsContainer>
@@ -55,9 +55,11 @@ export const InfoMoves = (props) => {
                     </StatsContainer>
                     <DescriptionContainer>
                         <Description>
-                            <SubText style={{ minHeight: '100%', width: '100%', background: 'repeating-linear-gradient( to bottom, #F0F8F8 0, #F0F8F8 42px, #E6E69E 42px, #E6E69E 84px)', padding: '0 25px 0 30px' }}>
-                                {info.moves[selectedValue][selectedIndex].description}
-                            </SubText>
+                            <TextDescription>
+                                <SubText>
+                                    {info.moves[selectedValue][selectedIndex].description}
+                                </SubText>
+                            </TextDescription>
                         </Description>
                     </DescriptionContainer>
                 </Container>
@@ -77,6 +79,12 @@ const MainText = styled.p`
     text-shadow: 2px 2px 2px #32363B;
     line-height: 42px;
     height: 42px;
+    @media (max-width: 480px) {
+        font-size: 29px;
+        line-height: 32px;
+        height: 32px;
+        text-shadow: 1px 1px 1px #32363B;
+    }
 `
 const SubText = styled.p`
 @font-face {
@@ -86,22 +94,35 @@ const SubText = styled.p`
     font-family: 'Open Sans', Arial, sans-serif;
     color: #252A30;
     font-size: 40px;
-    text-shadow: 1px 1px 3px #32363B;
+    text-shadow: 2px 2px 3px #BCBCBC;
     line-height: 42px;
+    @media (max-width: 480px) {
+        font-size: 29px;
+        line-height: 32px;
+    }
 `
 const Container = styled.div`
     width: 500px;
     height: 380px;
     position: absolute;
+    top: 0px;
     margin: 50px 0 0 -480px;
     box-shadow: -2px -2px 0 #32363B, 2px -2px 0 #32363B, -2px 2px 0 #32363B, 2px 2px 0 #32363B;
     border-radius: 20px;
     overflow: hidden;
     display: ${props => props.display};
+    @media (max-width: 480px){
+        width: 95.2%;
+        height: 69%;
+        border-radius: 30px;
+        top: -52%;
+        margin-left: 0;
+        left: 4%;
+    }
 `
 const StatsContainer = styled.div`
     height: 126px;
-    background: repeating-linear-gradient(to bottom, #F8C8C0 0, #F8C8C0 42px, #F0A8A0 42px,  #F0A8A0 84px);
+    background: repeating-linear-gradient(to bottom, #F8C8C0 0, #F8C8C0 32px, #F0A8A0 32px,  #F0A8A0 64px);
     background-color: #F8C8C0;
     text-transform: uppercase;
     padding: 0 30px;
@@ -115,6 +136,9 @@ const StatsContainer = styled.div`
         padding-right: 18px;
         border-radius: 20px;
     }
+    @media (max-width: 480px) {
+        height: 96px;
+    }
 `
 const FirtLine = styled.div`
     height: 63px;
@@ -124,6 +148,12 @@ const FirtLine = styled.div`
     align-items: center;
     padding-left: 30px;
     border-bottom: 2px solid #D86058;
+    @media (max-width: 480px){
+        height: 56px;
+        padding-left: 3px;
+        gap: 10px;
+        justify-content: space-evenly;
+    }
 `
 const FirtLineContent = styled.div`
     display: flex;
@@ -132,6 +162,9 @@ const FirtLineContent = styled.div`
 const SpritePokemon = styled.img`
     width: 90px;
     transform: scaleX(-1);
+    @media (max-width: 480px) {
+        width: 80px;
+    }
 `
 const TextFirtLine = styled.div`
     width: 300px;
@@ -146,6 +179,13 @@ const TextFirtLine = styled.div`
         padding: 20px;
         margin-top: -2px;
     }
+    @media (max-width: 480px) {
+        width: 150px;
+        .type {
+            width: 90px;
+            padding: 5px;
+        }
+    }
 `
 const SecontLine = styled.div`
     display: flex;
@@ -155,11 +195,21 @@ const SecontLine = styled.div`
 const CategoryIcon = styled.img`
     height: 34px;
     border-radius: 6px;
+    @media (max-width: 480px) {
+        height: 28px;
+    }
 `
 const ThirdLine = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 480px) {
+        height: 32px;
+        .bg-color{
+            height: 32px;
+            width: 70px;
+        }
+    }
 `
 const FourthLine = styled.div`
     display: flex;
@@ -168,9 +218,20 @@ const FourthLine = styled.div`
     .bg-color{
         background-color: #F2EFC0;
     }
+    @media (max-width: 480px) {
+        height: 32px;
+        .bg-color{
+            background-color: #F2EFC0;
+            height: 32px;
+            width: 70px;
+        }
+    }
 `
 const DescriptionContainer = styled.div`
     height: 191px;
+    @media (max-width: 480px) {
+        height: 167px;
+    }
 `
 const Description = styled.div`
     height: 100%;
@@ -184,6 +245,11 @@ const Description = styled.div`
 const BtnCloseContainer = styled.div`
     width: 40px;
     height: 40px;
+    @media (max-width: 480px) {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px
+    }
 `
 const BtnClose = styled.div`
     width: 100%;
@@ -194,5 +260,20 @@ const BtnClose = styled.div`
     transition: 0.2s ease;
     :hover{
         background-image: url("/Quest-React-Avancado/images/buton-icons/close-hover.png");
+    }
+    @media (max-width: 480px) {
+        background-image: url("/Quest-React-Avancado/images/buton-icons/close-hover.png");
+    }
+`
+const TextDescription = styled.div`
+    min-height: 100%;
+    width: 100%;
+    background: repeating-linear-gradient( to bottom, #F0F8F8 0, #F0F8F8 42px, #E6E69E 42px, #E6E69E 84px);
+    padding: 0 10px 0 15px;
+    @media (max-width: 480px) {
+        min-height: 100%;
+        width: 100%;
+        background: repeating-linear-gradient( to bottom, #F0F8F8 0, #F0F8F8 32px, #E6E69E 32px, #E6E69E 64px);
+        padding: 0 10px 10px 15px;
     }
 `

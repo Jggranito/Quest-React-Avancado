@@ -87,8 +87,8 @@ export const PokedexContainer = styled.div`
     border-radius: 50px;
     @media (max-width: 480px) 
     { 
-        height: 95%;
-        padding: 15px;
+        height: 98%;
+        padding: 10px;
     }
 
     .more-info{
@@ -113,7 +113,7 @@ export const Border = styled.div`
     @media (max-width: 480px) { 
         padding: 15px 10px 0 0;
         display: flex;
-        border-radius: 30px;
+        border-radius: 40px;
     };
 `;
 

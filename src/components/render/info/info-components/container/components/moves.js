@@ -9,6 +9,7 @@ export const Moves = (props) => {
     const [selectedValue, setSelectedValue] = useState('levelUp')
     const [selectedIndex, setSelectedIndex] = useState('0')
     const [isOpen, setIsOpen] = useState(false)
+    const [arrowController, setArrowController] = useState(1)
 
     const handleChange = (event) => {
         setSelectedValue(event)
@@ -33,64 +34,111 @@ export const Moves = (props) => {
         }
         setIsOpen(true);
     }
+    const controller = (i) => {
+        const newArrowController = arrowController + i;
+        const options = {
+            1: 'levelUp',
+            2: 'tm',
+            3: 'egg',
+            4: 'tutor',
+        };
+        const selectedValue = options[newArrowController];
+
+        setArrowController(newArrowController);
+        setSelectedValue(selectedValue);
+    }
 
     return (
-        <Container display={display}>
-            <Content>
-                <SwitchStats>
-                    <MoveOriginFilter  >
-                        <MainText>Moves learnt by: </MainText>
-                        <Options>
-                            <MainText className={(selectedValue === 'levelUp') ? "select" : "disable"} onClick={() => handleChange('levelUp')}>Level up</MainText>
-                            <MainText className={(selectedValue === 'tm') ? "select" : "disable"} onClick={() => handleChange('tm')}>TM</MainText>
-                            <MainText className={(selectedValue === 'egg') ? "select" : "disable"} onClick={() => handleChange('egg')}>Egg</MainText>
-                            <MainText className={(selectedValue === 'tutor') ? "select" : "disable"} onClick={() => handleChange('tutor')}>Tutor</MainText>
-                        </Options>
-                    </MoveOriginFilter>
-                </SwitchStats>
-                <ContentMoves>
-                    <ul>
-                        {info.moves[selectedValue].map((move, index) => (
-                            <li key={index}>
-                                <ContainerMoves onClick={() => showMoveDetails(index)} selectedIndex={selectedIndex} index={index}>
-                                    <TextMove>
-                                        <TypesContainer>
-                                            <MainText className={'type type-' + move.type}>{move.type}</MainText>
-                                        </TypesContainer>
-                                        <MainText className="move">{move.name}</MainText>
-                                        {move.levelLearned ? <MainText>Level - {move.levelLearned}</MainText> : ''}
-                                    </TextMove>
-                                    <ContainerPP>
-                                        <ContentPP>
-                                            <SubText>PP</SubText>
-                                            <SubText>{move.pp}/{move.pp}</SubText>
-                                        </ContentPP>
-                                    </ContainerPP>
-                                </ContainerMoves>
-                            </li>
-                        ))}
-                    </ul>
-                </ContentMoves>
-            </Content>
+        <div style={{position: 'relative', height: '100%'}}>
+            <Container display={display}>
+                <Content>
+                    <SwitchStats>
+                        <MoveOriginFilter>
+                            <Options className="desktop">
+                                <MainText>Moves learnt by:</MainText>
+                                <MainText className={(selectedValue === 'levelUp') ? "select" : "disable"} onClick={() => handleChange('levelUp')}>Level up</MainText>
+                                <MainText className={(selectedValue === 'tm') ? "select" : "disable"} onClick={() => handleChange('tm')}>TM</MainText>
+                                <MainText className={(selectedValue === 'egg') ? "select" : "disable"} onClick={() => handleChange('egg')}>Egg</MainText>
+                                <MainText className={(selectedValue === 'tutor') ? "select" : "disable"} onClick={() => handleChange('tutor')}>Tutor</MainText>
+                            </Options>
+                            <OptionsMobile className="mobile">
+                                <MainText className="text">Moves by:</MainText>
+                                {
+                                    arrowController > 1 ?
+                                        <ArrowContainer onClick={() => controller(-1)}>
+                                            <Arrow className="btn" src="/Quest-React-Avancado/images/buton-icons/arrow.png" />
+                                        </ArrowContainer>
+                                        :
+                                        <ArrowContainer>
+                                            <Arrow className="disabled" src="/Quest-React-Avancado/images/buton-icons/arrow.png" />
+                                        </ArrowContainer>
+                                }
+                                <MainText className={(selectedValue === 'levelUp') ? "select" : "disable"} onClick={() => handleChange('levelUp')}>Level</MainText>
+                                <MainText className={(selectedValue === 'tm') ? "select" : "disable"} onClick={() => handleChange('tm')}>TM</MainText>
+                                <MainText className={(selectedValue === 'egg') ? "select" : "disable"} onClick={() => handleChange('egg')}>Egg</MainText>
+                                <MainText className={(selectedValue === 'tutor') ? "select" : "disable"} onClick={() => handleChange('tutor')}>Tutor</MainText>
+                                {
+                                    arrowController < 4 ?
+                                        <ArrowContainer className="btn-area" onClick={() => controller(1)}>
+                                            <Arrow className="btn" src="/Quest-React-Avancado/images/buton-icons/arrowR.png" />
+                                        </ArrowContainer>
+                                        :
+                                        <ArrowContainer>
+                                            <Arrow className="disabled" src="/Quest-React-Avancado/images/buton-icons/arrowR.png" />
+                                        </ArrowContainer>
+                                }
+                            </OptionsMobile>
+                        </MoveOriginFilter>
+                    </SwitchStats>
+                    <ContentMoves>
+                        <ul>
+                            {info.moves[selectedValue].map((move, index) => (
+                                <li key={index}>
+                                    <ContainerMoves onClick={() => showMoveDetails(index)} selectedIndex={selectedIndex} index={index}>
+                                        <TextMove>
+                                            <TypesContainer>
+                                                <MainText className={'type type-' + move.type}>{move.type}</MainText>
+                                            </TypesContainer>
+                                            <MainText className="move">{move.name}</MainText>
+                                            {move.levelLearned ? <MainText className="level">Level - {move.levelLearned}</MainText> : ''}
+                                        </TextMove>
+                                        <ContainerPP>
+                                            <ContentPP>
+                                                <SubText>PP</SubText>
+                                                <SubText>{move.pp}/{move.pp}</SubText>
+                                            </ContentPP>
+                                        </ContainerPP>
+                                    </ContainerMoves>
+                                </li>
+                            ))}
+                        </ul>
+                    </ContentMoves>
+                </Content>
+            </Container>
             <InfoMoves info={info} selectedValue={selectedValue} selectedIndex={[selectedIndex, setSelectedIndex]} isOpen={[isOpen, setIsOpen]} />
-        </Container>
+        </div>
     )
 }
 
 const Container = styled.div`
     display: ${props => props.display};
-`
-const Content = styled.div`
     width: 650px;
     height: 420px;
     border-radius: 25px;
     background-color: #F88078;
     position: relative;
-    display: flex;
-    justify-content: right;
     box-shadow: -2px -2px 0 #32363B, 2px -2px 0 #32363B, -2px 2px 0 #32363B, 2px 2px 0 #32363B;
     overflow: hidden;
-    flex-direction: column;
+    @media (max-width: 480px) {
+        border-radius: 30px;
+        top: 34.1%;
+        margin-left: 4%;
+        width: 95%;
+        height: 62%;
+    }
+`
+const Content = styled.div`
+    width: 100%;
 `
 const SwitchStats = styled.div`
     width: 100%;
@@ -98,7 +146,10 @@ const SwitchStats = styled.div`
     display: flex;
     align-items: center;
     padding-left: 30px;
-    border-radius: 20px 20px 0 0;
+    @media (max-width: 480px) {
+        height: 32px;
+        padding-left: 10px;
+    }
 `
 const MainText = styled.p`
 @font-face {
@@ -109,8 +160,12 @@ const MainText = styled.p`
     color: #f8f8f8;
     font-size: 40px;
     text-shadow: 2px 2px 2px #32363B;
-    line-height: 42px;
     height: 42px;
+    @media (max-width: 480px) {
+        font-size: 29px;
+        height: 32px;
+        text-shadow: 1px 1px 1px #32363B;
+    }
 `
 const SubText = styled.p`
 @font-face {
@@ -121,8 +176,12 @@ const SubText = styled.p`
     color: #252A30;
     text-transform: uppercase;
     font-size: 40px;
-    text-shadow: 1px 1px 4px #32363B;
-    line-height: 42px;
+    text-shadow: 2px 2px 3px #BCBCBC;
+    height: 42px;
+    @media (max-width: 480px) {
+        font-size: 29px;
+        height: 28px;
+    }
 `
 const MoveOriginFilter = styled.div`
     width: 100%;
@@ -131,11 +190,23 @@ const MoveOriginFilter = styled.div`
     margin: 10px 0;
     border-radius: 5px;
     color: #333333;
-    font-size: 16px;
     padding: 4px 10px;
     border-radius: 20px;
     gap: 25px;
     cursor: default;
+    .mobile{
+        display: none;
+    }
+    @media (max-width: 480px) {
+        font-size: 12px;
+        gap: 25px;
+        .desktop{
+            display: none;
+        }
+        .mobile {
+            display: flex;
+        }
+    }
 `
 const Options = styled.div`
     display: flex;
@@ -143,10 +214,31 @@ const Options = styled.div`
     .disable{
         cursor: pointer;
         color: #999999;
-
     }
     .select{
         text-decoration: underline #EA1C26;
+    }
+`
+const OptionsMobile = styled.div`
+    gap: 10px;
+    .disable{
+        display: none;
+    }
+    .disabled{
+        filter: grayscale(100%);
+    }
+    .select{
+        display: block;
+        width: 50px;
+        text-align: center;
+    }
+    .text {
+        margin-right: 30px;
+    }
+    @media (max-width: 480px) {
+        .desktop {
+            display: none;
+        }
     }
 `
 const ContentMoves = styled.div`
@@ -158,6 +250,9 @@ const ContentMoves = styled.div`
         height: 100px;
         border-radius: 6px;
     }
+    @media (max-width: 480px){
+        height: 242px;
+    }
 `
 const ContainerMoves = styled.div`
     cursor: pointer;
@@ -167,6 +262,13 @@ const ContainerMoves = styled.div`
         border: none;
         padding: 5px;
         box-shadow: inset 0 0 0 5px rgb(255, 5, 5);
+    }
+    @media (max-width: 480px) {
+        padding: 0px;
+        :hover{
+            padding: 3px;
+            box-shadow: inset 0 0 0 2px rgb(255, 5, 5);
+        }
     }
 `
 const TextMove = styled.div`
@@ -180,12 +282,26 @@ const TextMove = styled.div`
         width: 150px;
         height: 40px;
         padding: 20px;
-        margin-top: -2px;
+        margin-top: 2px;
     }
     .move {
         width: 200px;
         text-transform: capitalize;
         justify-content: left;
+    }
+    @media (max-width: 480px) {
+        height: 28px;
+        padding-left: 20px;
+        gap: 20px;
+        .type{
+            width: 95px;
+            height: 25px;
+            border-radius: 6px;
+            padding: 0;
+        }
+        .level {
+            display: none;
+        }
     }
 `
 const ContainerPP = styled.div`
@@ -193,6 +309,9 @@ const ContainerPP = styled.div`
     display: flex;
     align-items: center;
     justify-content: right;
+    @media (max-width: 480px) {
+        height: 28px;
+    }
 `
 const ContentPP = styled.div`
     height: 42px;
@@ -202,4 +321,24 @@ const ContentPP = styled.div`
     background: #F0F8F8;
     border-radius: 20px;
     margin-right: 100px;
+    @media (max-width: 480px) {
+        height: 26px;
+        width: 120px;
+        margin-right: 10px;
+        align-items: center;
+    }
+`
+const ArrowContainer = styled.div`
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: 480px) {
+        width: 32px;
+        height: 32px;
+    }
+`
+const Arrow = styled.img`
+    height: 20px;
 `

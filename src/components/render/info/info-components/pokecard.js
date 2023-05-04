@@ -43,7 +43,7 @@ const SubText = styled.p`
     font-family: 'Open Sans', Arial, sans-serif;
     color: #242C35;
     font-size: 40px;
-    text-shadow: 1px 1px 4px #32363B;
+    text-shadow: 2px 2px 3px #BCBCBC;
     line-height: 42px;
 `
 

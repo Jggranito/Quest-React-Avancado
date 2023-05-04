@@ -25,9 +25,10 @@ export const Stats = (props) => {
                     <MainText className="text">Ability</MainText>
                     <AbilityName>
                         {
-                            info.abilities[abilityIndex - 1] ? <ArrowContainer className="btn-area" onClick={() => setIndex(-1)}>
-                                <Arrow className="btn" src="/Quest-React-Avancado/images/buton-icons/arrow.png" />
-                            </ArrowContainer>
+                            info.abilities[abilityIndex - 1] ?
+                                <ArrowContainer className="btn-area" onClick={() => setIndex(-1)}>
+                                    <Arrow className="btn" src="/Quest-React-Avancado/images/buton-icons/arrow.png" />
+                                </ArrowContainer>
                                 :
                                 <ArrowContainer>
                                     <Arrow className="disabled" src="/Quest-React-Avancado/images/buton-icons/arrow.png" />
@@ -35,9 +36,10 @@ export const Stats = (props) => {
                         }
                         <SubText>{info.abilities[abilityIndex].ability.name}</SubText>
                         {
-                            info.abilities[abilityIndex + 1] ? <ArrowContainer className="btn-area" onClick={() => setIndex(1)}>
-                                <Arrow className="btn" src="/Quest-React-Avancado/images/buton-icons/arrowR.png" />
-                            </ArrowContainer>
+                            info.abilities[abilityIndex + 1] ?
+                                <ArrowContainer className="btn-area" onClick={() => setIndex(1)}>
+                                    <Arrow className="btn" src="/Quest-React-Avancado/images/buton-icons/arrowR.png" />
+                                </ArrowContainer>
                                 :
                                 <ArrowContainer>
                                     <Arrow className="disabled" src="/Quest-React-Avancado/images/buton-icons/arrowR.png" />
@@ -73,14 +75,27 @@ const StatsContainer = styled.div`
     position: relative;
     justify-content: right;
     box-shadow: -2px -2px 0 #32363B, 2px -2px 0 #32363B, -2px 2px 0 #32363B, 2px 2px 0 #32363B;
+    @media (max-width: 480px) {
+        position: relative;
+        border-radius: 30px;
+        overflow: hidden;
+        top: 34.1%;
+        margin-left: 4%;
+        width: 95%;
+        height: 62%;
+    }
 `
 const TextContainer = styled.div`
     width: 100%;
+
     .bg-color{
         background-color: #6770D9;
     }
     .hp {
         margin-left: 38px;
+        @media (max-width: 480px) {
+            margin-left: 20px;
+        }
     }
 `
 const MainText = styled.p`
@@ -92,11 +107,16 @@ const MainText = styled.p`
     color: #f8f8f8;
     font-size: 40px;
     text-shadow: 2px 2px 2px #32363B;
-    line-height: 42px;
     height: 42px;
     display: flex;
     align-items: center;
     padding-left: 90px;
+    @media (max-width: 480px) {
+        font-size: 29px;
+        padding-left: 40px;
+        height: 28px;
+        text-shadow: 1px 1px 1px #32363B;
+    }
 `
 const SubText = styled.p`
 @font-face {
@@ -106,20 +126,32 @@ const SubText = styled.p`
     font-family: 'Open Sans', Arial, sans-serif;
     color: #252A30;
     font-size: 40px;
-    text-shadow: 1px 1px 4px #32363B;
-    line-height: 42px;
+    text-shadow: 2px 2px 3px #BCBCBC;
+    height: 42px;
+    @media (max-width: 480px) {
+        font-size: 29px;
+        height: 28px;
+    }
 `
 const HPBarContainer = styled.div`
     height: 19px;
     display: flex;
     justify-content: right;
     padding-right: 80px;
+    @media (max-width: 480px) {
+        height: 12px;
+    }
 `
 const HPBar = styled.img`
-    align-self: center;
     width: 250px;
     height: 17px;
     margin-left: 16px;
+    @media (max-width: 480px) {
+        display: flex;
+        align-self: center;
+        height: 12px;
+        width: 80%;
+    }
 `
 const AbilityConteiner = styled.div`
     height: 63px;
@@ -128,6 +160,12 @@ const AbilityConteiner = styled.div`
     gap: 20px;
     .text{
         padding-left: 40px;
+    }
+    @media (max-width: 480px) {
+        height: 40px;
+        .text{
+            padding-left: 20px;
+        }
     }
 `
 const AbilityName = styled.div`
@@ -162,10 +200,15 @@ const AbilityName = styled.div`
         filter: grayscale(100%);
         cursor: default;
     }
+    @media (max-width: 480px) {
+        height: 28px;
+        padding-left: 15px;
+
+    }
 `
 const Description = styled.div`
     height: 86px;
-    background: linear-gradient(to bottom, #F0F8F8 50%, #F0F0C0 50%);
+    background: repeating-linear-gradient(to bottom, #F0F8F8 0, #F0F8F8 42px, #F0F0C0 42px,  #F0F0C0 84px);
     border-radius: 0 0 25px 25px;
     padding: 0 15px 0 20px;
     margin-bottom: 10px;
@@ -173,6 +216,15 @@ const Description = styled.div`
     flex-wrap: wrap;
     .description {
         line-height: 40px;
+    }
+    @media (max-width: 480px) {
+        height: 80px;
+        background: repeating-linear-gradient(to bottom, #F0F8F8 0, #F0F8F8 28px, #F0F0C0 28px,  #F0F0C0 56px);
+        .description {
+            line-height: 28px;
+            font-size: 25px;
+            text-shadow: 1px 1px 1px #BCBCBC;
+        }
     }
 `
 const Arrow = styled.img`
@@ -191,6 +243,10 @@ const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+        @media (max-width: 480px) {
+            height: 28px;
+            width: 96%;
+        }
     }
 `
 const CombatStatus = styled.div`
@@ -204,6 +260,13 @@ const CombatStatus = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @media (max-width: 480px) {
+        width: 83%;
+        height: 140px;
+        margin-left: 12px;
+        margin-top: 0;
+        background: repeating-linear-gradient(to bottom, #F0F8F8 0, #F0F8F8 28px, #F0F0C0 28px,  #F0F0C0 56px);
+    }
 `
 const ArrowContainer = styled.div`
     width: 42px;
@@ -211,4 +274,8 @@ const ArrowContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 480px) {
+        width: 32px;
+        height: 32px;
+    }
 `

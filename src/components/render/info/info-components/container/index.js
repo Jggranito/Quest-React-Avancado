@@ -43,10 +43,9 @@ export const InfoContainer = (props) => {
             </InfoButtons>
             <Container>
                 <General info={info} display={generalDisplay} />
+                <Stats info={info} display={statsDisplay} />
+                <Moves info={info} display={movesDisplay} />
             </Container>
-            
-            <Stats info={info} display={statsDisplay} />
-            <Moves info={info} display={movesDisplay} />
         </Info>
     )
 }
@@ -54,7 +53,7 @@ export const InfoContainer = (props) => {
 const Container = styled.div`
     position: relative;
     @media (max-width: 480px){
-        width: 56.5%;
+        /* width: 56.5%; */
         height: 72.5%;
     }
 `
