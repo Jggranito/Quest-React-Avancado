@@ -58,16 +58,12 @@ export const MoreInfo = () => {
                 break
         }
     }
-    // setTimeout(() => {
-    //     console.log(info.stats.hp);
-    // }, 500);
-    // isLoading ? console.log('carregando') : console.log(info)
 
     return (
         <BgImage>
             <nav className='menu' style={{ display: 'flex', justifyContent: 'space-between', padding: '0 2%', alignItems: 'center' }}>
                 <P style={{ color: '#FFFFFF', fontSize: '65px', height: '58px', display: 'flex', alignItems: 'center' }}>POKéMON INFO</P>
-                <Link to='/' style={{ backgroundColor: 'white', borderRadius: '30px', padding: '3px 10px' }}> Voltar </Link>
+                <Link to='/Quest-React-Avancado' style={{ backgroundColor: 'white', borderRadius: '30px', padding: '3px 10px' }}> Voltar </Link>
             </nav>
             <Container>
                 <PokedexContainer>

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { useState } from "react";
 import { useLocation } from "react-router-dom"
-import './style.css'
+import './css/style.css'
 
 export const Moves = (props) => {
     const info = props.info
@@ -39,8 +39,6 @@ export const Moves = (props) => {
     const handleClose = () => {
         setIsOpen(false)
     }
-
-    console.log(info.moves.egg)
 
     return (
         <div style={{display}}>
@@ -136,7 +134,7 @@ export const Moves = (props) => {
 const P = styled.p`
                 @font-face {
                     font-family: 'Open Sans';
-                src: url('../font/pokemon-dp-pro.ttf') format('truetype');
+                src: url('./font/pokemon-dp-pro.ttf') format('truetype');
     }
                 font-family: 'Open Sans', Arial, sans-serif;
                 color: #242C35;

@@ -53,7 +53,7 @@ export function Pokedex() {
 export default Pokedex;
 
 const BgImage = styled.div`
-    background: url("/images/background.jpg") no-repeat center center fixed;
+    background: url('/images/background.jpg') no-repeat center center fixed;
     background-size: cover;
     overflow: hidden;
     height: 100vh;
