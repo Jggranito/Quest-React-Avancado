@@ -53,7 +53,6 @@ export const InfoContainer = (props) => {
 const Container = styled.div`
     position: relative;
     @media (max-width: 480px){
-        /* width: 56.5%; */
         height: 72.5%;
     }
 `
@@ -87,7 +86,7 @@ const InfoButtons = styled.div`
     }
     @media (max-width: 480px) {
         position: relative;
-        top: 24.7%;
+        top: 24.8%;
         .btn-card {
             width: 32px;
             height: 28px;

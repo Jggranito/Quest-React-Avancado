@@ -122,13 +122,13 @@ const CardBgImage = styled.div`
 `
 
 const CardImageSprite = styled.img`
-    width: 200px;
+    width: 300px;
     z-index: 0;
     transform: scaleX(-1);
     @media (max-width: 480px) {
         position: absolute;
-        top: -2%;
-        left: 17%;
-        width: 70%;
+        top: -4%;
+        left: 15%;
+        width: 75%;
     }
 `

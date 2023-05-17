@@ -49,7 +49,7 @@ export const Moves = (props) => {
     }
 
     return (
-        <div style={{position: 'relative', height: '100%'}}>
+        <>
             <Container display={display}>
                 <Content>
                     <SwitchStats>
@@ -91,7 +91,7 @@ export const Moves = (props) => {
                         </MoveOriginFilter>
                     </SwitchStats>
                     <ContentMoves>
-                        <ul>
+                        <ul style={{height: '100%'}}>
                             {info.moves[selectedValue].map((move, index) => (
                                 <li key={index}>
                                     <ContainerMoves onClick={() => showMoveDetails(index)} selectedIndex={selectedIndex} index={index}>
@@ -115,8 +115,8 @@ export const Moves = (props) => {
                     </ContentMoves>
                 </Content>
             </Container>
-            <InfoMoves info={info} selectedValue={selectedValue} selectedIndex={[selectedIndex, setSelectedIndex]} isOpen={[isOpen, setIsOpen]} />
-        </div>
+            <InfoMoves info={info} selectedValue={selectedValue} selectedIndex={[selectedIndex, setSelectedIndex]} display={display} isOpen={[isOpen, setIsOpen]} />
+        </>
     )
 }
 
@@ -139,6 +139,7 @@ const Container = styled.div`
 `
 const Content = styled.div`
     width: 100%;
+    height: 100%;
 `
 const SwitchStats = styled.div`
     width: 100%;
@@ -251,7 +252,7 @@ const ContentMoves = styled.div`
         border-radius: 6px;
     }
     @media (max-width: 480px){
-        height: 242px;
+        height: 91%;
     }
 `
 const ContainerMoves = styled.div`
@@ -264,7 +265,8 @@ const ContainerMoves = styled.div`
         box-shadow: inset 0 0 0 5px rgb(255, 5, 5);
     }
     @media (max-width: 480px) {
-        padding: 0px;
+        padding: 3px;
+        border: ${props => props.selectedIndex === props.index ? '3px solid rgb(234, 28, 38); padding: 0px;' : 'none'};
         :hover{
             padding: 3px;
             box-shadow: inset 0 0 0 2px rgb(255, 5, 5);

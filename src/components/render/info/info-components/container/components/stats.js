@@ -202,39 +202,48 @@ const AbilityName = styled.div`
     }
     @media (max-width: 480px) {
         height: 28px;
-        padding-left: 15px;
+        padding: 0;
+        justify-content: center;
 
     }
 `
 const Description = styled.div`
     height: 86px;
-    background: repeating-linear-gradient(to bottom, #F0F8F8 0, #F0F8F8 42px, #F0F0C0 42px,  #F0F0C0 84px);
+    background: repeating-linear-gradient(to bottom, #F0F8F8 0, #F0F8F8 42px, #F0F0C0 42px,  #F0F0C0 90px);
     border-radius: 0 0 25px 25px;
     padding: 0 15px 0 20px;
     margin-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
+    overflow: hidden;
     .description {
         line-height: 40px;
+        overflow-y: auto;
+        height: 100%;
     }
     @media (max-width: 480px) {
-        height: 80px;
+        height: 25%;
+        /* padding-bottom: 100px; */
+        padding: 0 10px 0 20px;
         background: repeating-linear-gradient(to bottom, #F0F8F8 0, #F0F8F8 28px, #F0F0C0 28px,  #F0F0C0 56px);
         .description {
-            line-height: 28px;
-            font-size: 25px;
+            line-height: 26px;
+            font-size: 24px;
             text-shadow: 1px 1px 1px #BCBCBC;
+            padding-bottom: 5%;
         }
     }
 `
 const Arrow = styled.img`
     cursor: pointer;
     z-index: 2;
+    @media (max-width: 480px) {
+        width: 11px;
+    }
 `
 const Container = styled.div`
     position: absolute;
     width: 50%;
-    height: 100%;
     .stats-hp{
         height: 42px;
         width: 280px;
@@ -274,6 +283,7 @@ const ArrowContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 5px;
     @media (max-width: 480px) {
         width: 32px;
         height: 32px;

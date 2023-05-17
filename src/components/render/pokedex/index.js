@@ -8,23 +8,88 @@ import styled from 'styled-components';
 
 export function Pokedex() {
     const [pokemons, setPokemons] = useState([]);
+    const [display, setDisplay] = useState('flex');
+    const [heightFilter, setHeightFilter] = useState('500px')
+    const [selectFilter, setSelectFilter] = useState(10)
+    const [limit, setLimit] = useState(0)
+
+    const types = [
+        { name: 'all', icon: '/Quest-React-Avancado/types-icon/all.png' },
+        { name: 'normal', icon: '/Quest-React-Avancado/types-icon/normal.png' },
+        { name: 'fighting', icon: '/Quest-React-Avancado/types-icon/fighting.png' },
+        { name: 'flying', icon: '/Quest-React-Avancado/types-icon/flying.png' },
+        { name: 'poison', icon: '/Quest-React-Avancado/types-icon/poison.png' },
+        { name: 'ground', icon: '/Quest-React-Avancado/types-icon/ground.png' },
+        { name: 'rock', icon: '/Quest-React-Avancado/types-icon/rock.png' },
+        { name: 'bug', icon: '/Quest-React-Avancado/types-icon/bug.png' },
+        { name: 'ghost', icon: '/Quest-React-Avancado/types-icon/ghost.png' },
+        { name: 'steel', icon: '/Quest-React-Avancado/types-icon/steel.png' },
+        { name: 'fire', icon: '/Quest-React-Avancado/types-icon/fire.png' },
+        { name: 'water', icon: '/Quest-React-Avancado/types-icon/water.png' },
+        { name: 'grass', icon: '/Quest-React-Avancado/types-icon/grass.png' },
+        { name: 'electric', icon: '/Quest-React-Avancado/types-icon/electric.png' },
+        { name: 'psychic', icon: '/Quest-React-Avancado/types-icon/psychic.png' },
+        { name: 'ice', icon: '/Quest-React-Avancado/types-icon/ice.png' },
+        { name: 'dragon', icon: '/Quest-React-Avancado/types-icon/dragon.png' },
+        { name: 'dark', icon: '/Quest-React-Avancado/types-icon/dark.png' },
+        { name: 'fairy', icon: '/Quest-React-Avancado/types-icon/fairy.png' }
+    ];
 
     useEffect(() => {
         const fetchData = async () => {
-            const pokemonsData = await setPokedex(0);
-            setPokemons(pokemonsData);
+            const pokemonsData = await setPokedex(0, selectFilter);
+            const limitedPokedexData = pokemonsData.slice(0, 10);
+            setPokemons(limitedPokedexData);
+            setLimit(10)
         };
         fetchData();
-    }, []);
+    }, [selectFilter]);
 
     const addPokemon = async () => {
-        const newPokedexData = await setPokedex(pokemons.length);
-        setPokemons([...pokemons, ...newPokedexData]);
+        const newPokedexData = await setPokedex(pokemons.length, selectFilter);
+        const limitedNewPokedexData = newPokedexData.slice(limit, limit+10);
+        setPokemons([...pokemons, ...limitedNewPokedexData]);
+        setLimit(limit+10)
     };
+
+    const handleDisplay = (filter, key) => {
+        setDisplay(filter);
+        setSelectFilter(key);
+        filter === 'none' ? setHeightFilter('35px') : setHeightFilter('500px')
+    }
+
+    // console.log(pokemons    )
 
     return (
         <BgImage>
             <Menu>
+                <div className='filter' style={{ display: 'flex', gap: '30px', zIndex: '1', paddingTop: '11px', height: '50px' }}>
+                    <div style={{ width: '200px', marginLeft: '50px', height: `${heightFilter}`, backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '5px 10px 0 20px', borderRadius: '25px', overflow: 'hidden', transition: 'all 0.2s ease 0s', lineHeight: '0' }} onClick={display === 'none' ? () => handleDisplay('flex', selectFilter) : null}>
+                        <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+                            <SubText>Type: </SubText>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <img src={types[selectFilter].icon} style={{ width: '25px' }} alt={`type ${types[selectFilter].name}`}/>
+                                <SubText>{`  ${types[selectFilter].name}`}</SubText>
+                            </div>
+                        </div>
+                        <div style={{ padding: '10px', flexDirection: 'column', marginTop: '10px', overflowY: 'scroll', height: '450px', display: `${display}`, cursor: 'pointer' }}>
+                            {
+                                types.map((type, index) => (
+                                    <>
+                                        <li key={index} style={{ display: 'flex', alignItems: 'center', gap: '10px', lineHeight: '50px' }} onClick={() => handleDisplay('none', index)}>
+                                            <img src={type.icon} alt={`type ${type.name}`} style={{ width: '28px', height: '28px' }} />
+                                            <SubText>{type.name}</SubText>
+                                        </li>
+                                        <hr style={{ width: '110%', marginLeft: '-14px', borderTopColor: 'rgba(56, 56, 56, 0.3)' }} />
+                                    </>
+                                ))
+                            }
+                        </div>
+                    </div>
+                    <div>
+                        <p>Name: </p>
+                    </div>
+                </div>
                 <PokedexLogo src='/Quest-React-Avancado/images/pokedex.png' alt='pokedex logo' />
             </Menu>
             <Container>
@@ -72,6 +137,7 @@ export const Container = styled.section`
     padding: 0 22px;
     @media (max-width: 480px) {
         margin-bottom: 50px;
+        height: 85%;
     }
 `;
 
@@ -141,7 +207,18 @@ const Text = styled.p`
     font-weight: 500;
     border-width: 0;
 
-`;
+`
+const SubText = styled.p`
+@font-face {
+        font-family: 'Open Sans';
+        src: url('/Quest-React-Avancado/font/pokemon-dp-pro.ttf') format('truetype');
+    }
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: #252A30;
+    text-transform: capitalize;
+    font-size: 28px;
+    text-shadow: 1px 1px 3px #BCBCBC;
+`
 const BtnLoadMore = styled.div`
     .btn-load-more {
         display: flex;
@@ -181,7 +258,8 @@ const Menu = styled.nav`
     width: 100%;
     height: 65px;
     background: url('/Quest-React-Avancado/images/menu.png') repeat-x ;
-    text-align: right;
+    display: flex;
+    justify-content: space-between;
 `
 
 const PokedexLogo = styled.img`

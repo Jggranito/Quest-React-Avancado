@@ -15,7 +15,7 @@ export const Cards = (props) => {
                 >
                     <PokeCard>
                         <SpritePokeCard>
-                            <img src={pokemon.sprites.spriteAnimatedUrl} alt={pokemon.name} />
+                            <img src={pokemon.sprites.spriteAnimatedUrl} alt={pokemon.name} style={{maxWidth: '100%'}}/>
                         </SpritePokeCard>
                         <InfoPokeCard>
                             <Name>{pokemon.name}</Name>
@@ -70,7 +70,7 @@ const Name = styled.p`
     }
     font-family: 'Open Sans', Arial, sans-serif;
     color: #F8F8F8;
-    font-size: 30px;
+    font-size: 22px;
     text-shadow: 1px 1px 1px #32363B;
     width: 120px;
     font-weight: 500;

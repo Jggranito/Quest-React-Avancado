@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom"
 
 export const InfoMoves = (props) => {
     const info = props.info
+    const display = props.display
     const selectedValue = props.selectedValue
     const [selectedIndex, setSelectIndex] = props.selectedIndex
     const [isOpen, setIsOpen] = props.isOpen
@@ -16,7 +17,7 @@ export const InfoMoves = (props) => {
     return (
         <>
             {info.moves[selectedValue][selectedIndex] ?
-                <Container className="move-info" display={isOpen ? 'block' : 'none'}>
+                <Container className="move-info" display={display === 'flex'? (isOpen ? 'block' : 'none') : 'none'}>
                     <FirtLine>
                         <FirtLineContent>
                             <SpritePokemon src={pokemon.sprites.spriteVIIIGen} alt='pokemon icon' />
@@ -230,7 +231,7 @@ const FourthLine = styled.div`
 const DescriptionContainer = styled.div`
     height: 191px;
     @media (max-width: 480px) {
-        height: 167px;
+        height: 53%;
     }
 `
 const Description = styled.div`
