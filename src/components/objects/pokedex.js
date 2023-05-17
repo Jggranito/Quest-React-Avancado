@@ -5,7 +5,6 @@ export const setPokedex = async (start, filter) => {
     infoPokemon: [],
     async setPokemonData(pokemonName, index, type) {
       const pokemon = await getPokemon(pokemonName, type);
-      console.log(pokemon)
       const name = pokemon.name
       const sprites = {
         simpleSprite: pokemon.sprites.other["official-artwork"].front_default,

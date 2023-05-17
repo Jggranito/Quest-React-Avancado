@@ -13,6 +13,6 @@ export const getPokedex = async (start, filter) => {
 
 export const getPokemon = async (name, type) => {
   let url
-  type === 0 ? url = `${apiUrl}pokemon/${name}/` : url = name
+  !type ? url = `${apiUrl}pokemon/${name}/` : type === 0 ? url = `${apiUrl}pokemon/${name}/` : url = name;
   return await fetchData(url);
 };

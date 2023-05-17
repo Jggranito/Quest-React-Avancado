@@ -8,10 +8,10 @@ import styled from 'styled-components';
 
 export function Pokedex() {
     const [pokemons, setPokemons] = useState([]);
-    const [display, setDisplay] = useState('flex');
-    const [heightFilter, setHeightFilter] = useState('500px')
-    const [selectFilter, setSelectFilter] = useState(10)
-    const [limit, setLimit] = useState(0)
+    const [display, setDisplay] = useState('none');
+    const [heightFilter, setHeightFilter] = useState('35px')
+    const [selectFilter, setSelectFilter] = useState(0)
+    const [limit, setLimit] = useState(10)
 
     const types = [
         { name: 'all', icon: '/Quest-React-Avancado/types-icon/all.png' },
@@ -48,7 +48,7 @@ export function Pokedex() {
     const addPokemon = async () => {
         const newPokedexData = await setPokedex(pokemons.length, selectFilter);
         const limitedNewPokedexData = newPokedexData.slice(limit, limit+10);
-        setPokemons([...pokemons, ...limitedNewPokedexData]);
+        selectFilter === 0 ? setPokemons([...pokemons, ...newPokedexData]) : setPokemons([...pokemons, ...limitedNewPokedexData]);
         setLimit(limit+10)
     };
 
@@ -58,13 +58,11 @@ export function Pokedex() {
         filter === 'none' ? setHeightFilter('35px') : setHeightFilter('500px')
     }
 
-    // console.log(pokemons    )
-
     return (
         <BgImage>
             <Menu>
                 <div className='filter' style={{ display: 'flex', gap: '30px', zIndex: '1', paddingTop: '11px', height: '50px' }}>
-                    <div style={{ width: '200px', marginLeft: '50px', height: `${heightFilter}`, backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '5px 10px 0 20px', borderRadius: '25px', overflow: 'hidden', transition: 'all 0.2s ease 0s', lineHeight: '0' }} onClick={display === 'none' ? () => handleDisplay('flex', selectFilter) : null}>
+                    <div style={{ width: '200px', marginLeft: '50px', height: `${heightFilter}`, backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '5px 10px 0 20px', borderRadius: '25px', overflow: 'hidden', transition: 'all 0.2s ease 0s', lineHeight: '0', cursor: 'pointer' }} onClick={display === 'none' ? () => handleDisplay('flex', selectFilter) : null}>
                         <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
                             <SubText>Type: </SubText>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>

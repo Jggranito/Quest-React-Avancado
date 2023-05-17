@@ -8,7 +8,7 @@ export const Cards = (props) => {
             return (
                 <Link
                     key={index}
-                    to={{ pathname: `/Quest-React-Avancado/more-info/${pokemon.name}` }}
+                    to={{ pathname: `/Quest-React-Avancado/${pokemon.name}` }}
                     state={{ pokemon: pokemon }}
                     className={pokemon.types[1]}
                     style={{ height: '112px', transition: 'all 0.3s ease 0s' }}
