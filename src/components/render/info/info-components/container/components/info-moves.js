@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
+
 import { MainText, SubText } from "../../../../../global/text";
 
 export const InfoMoves = (props) => {
@@ -23,9 +24,9 @@ export const InfoMoves = (props) => {
                         <FirtLineContent>
                             <SpritePokemon src={pokemon.sprites.spriteVIIIGen} alt='pokemon icon' />
                             <TextFirtLine>
-                                <MainText ClassName={'type type-' + pokemon.types[1]} FontSize='40px'>{pokemon.types[1]}</MainText>
+                                <MainText ClassName={`type type-${pokemon.types[1]}`} FontSize='40px'>{pokemon.types[1]}</MainText>
                                 {
-                                    pokemon.types[2] ? <MainText ClassName={'type type-' + pokemon.types[2]} FontSize='40px'>{pokemon.types[2]}</MainText> : ''
+                                    pokemon.types[2] ? <MainText ClassName={`type type-${pokemon.types[2]}`} FontSize='40px'>{pokemon.types[2]}</MainText> : ''
                                 }
                             </TextFirtLine>
                         </FirtLineContent>
@@ -34,10 +35,10 @@ export const InfoMoves = (props) => {
                         </BtnCloseContainer>
                     </FirtLine>
                     <StatsContainer>
-                        <SecontLine>
+                        <SecondLine>
                             <MainText ClassName='line' FontSize='40px' height='42px'>category</MainText>
                             <CategoryIcon src={"/Quest-React-Avancado/images/" + info.moves[selectedValue][selectedIndex].category + ".png"} alt="category move icon" />
-                        </SecontLine>
+                        </SecondLine>
                         <ThirdLine>
                             <MainText ClassName='line' FontSize='40px' height='42px'>power</MainText>
                             <SubText ClassName="bg-color line" FontSize='40px'>
@@ -173,7 +174,7 @@ const TextFirtLine = styled.div`
         }
     }
 `
-const SecontLine = styled.div`
+const SecondLine = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;

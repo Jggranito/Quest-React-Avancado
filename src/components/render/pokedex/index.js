@@ -1,11 +1,12 @@
 import './css/hover.css';
-import { setPokedex } from '../../objects/pokedex';
 import React, { useEffect, useState, useContext } from 'react';
+import styled from 'styled-components';
+
 import { Button } from '../../button/button';
 import { Cards } from '../card/card';
-import styled from 'styled-components';
 import { CirclePlus } from '../../svg/circlePlus';
 import { MainBackground } from '../../global/mainBackground';
+import { setPokedex } from '../../objects/pokedex';
 import { ThemeContext } from '../../../context/themeContext';
 
 export function Pokedex() {
@@ -24,6 +25,8 @@ export function Pokedex() {
         };
         fetchData();
     }, [selectFilter, filterName]);
+
+    console.log(pokemons)
 
     const addPokemon = async () => {
         if (pokemons.length === limit + 1) pokemons.pop();

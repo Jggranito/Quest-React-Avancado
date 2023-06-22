@@ -1,14 +1,13 @@
 import styled from "styled-components";
 import { FilterByType } from "./filters/byType"
 import { FilterByName } from "./filters/byName";
-import { ThemeContext, themes } from '../../../context/themeContext';
 import { useContext } from "react";
-import { AnimatedIconTheme } from '../../svg/sunAndMon';
 import { Link } from "react-router-dom"
+import { AnimatedIconTheme } from '../../svg/sunAndMon';
+import { ThemeContext, themes } from '../../../context/themeContext';
 
 export const Menu = (props) => {
-    const [selectFilter, setSelectFilter] = props.filter;
-    const [filterName, setFilterName] = props.byName;
+    const { filter = '', byName = '' } = props;
     const { theme, setTheme } = useContext(ThemeContext)
     const isHome = props.isHome
 
@@ -17,8 +16,8 @@ export const Menu = (props) => {
             {
                 isHome ?
                     <Filters>
-                        <FilterByType filter={[selectFilter, setSelectFilter]} />
-                        <FilterByName byName={[filterName, setFilterName]} />
+                        <FilterByType filter={filter} />
+                        <FilterByName byName={byName} />
                     </Filters>
                     :
                     <Link className="menu-back-btn" to="/Quest-React-Avancado">
@@ -31,7 +30,6 @@ export const Menu = (props) => {
         </BgMenu>
     )
 }
-
 const BgMenu = styled.nav`
     width: 100%;
     height: 9%;
@@ -41,15 +39,13 @@ const BgMenu = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @media (max-width: 480px) {
+    @media (max-width: 767px) {
         padding: 0 15px;
         height: 7%;
     }
-    @media (min-width: 480px) and (max-width: 800px){
+    @media (min-width: 768px) and (max-width: 991px){
         height: 10%;
     }
-
     .menu-back-btn{
         background-color: #f8f8f8;
         color: #242C35;
@@ -57,24 +53,22 @@ const BgMenu = styled.nav`
         padding: 3px 10px;
         transition: 0.3s ease 0.1s;
         display: flex;
-        @media (max-width: 480px) {
+        @media (max-width: 767px){
             height: 2.2rem;
             margin-top: 0.25rem;
             padding: 0 16px;
             align-items: center;
         }
-        @media (min-width: 480px) and (max-width: 800px) {
+        @media (min-width: 768px) and (max-width: 991px){
             height:80%;
             padding: 0 10px;
             align-items: center;
         }
     }
-
     .menu-sub-text {
         font-size: 32px;
         line-height: 32px;
     }
-
     .menu-back-btn:hover{
         background-color: #242C35;
         color: #f8f8f8;
@@ -88,8 +82,7 @@ const Filters = styled.div`
     gap: 40px;
     z-Index: 1;
     height: 50px;
-
-    @media (max-width: 480px) {
+    @media (max-width: 767px){
         gap: 10px;
     }
 `
@@ -104,11 +97,11 @@ const ToggleTheme = styled.div`
     cursor: pointer;
     margin-right: 5%;
 
-    @media (max-width: 480px) {
+    @media (max-width: 767px){
         width: ${props => props.width};
         height: 62.5%;
     }
-    @media (min-width: 480px) and (max-width: 800px){
+    @media (min-width: 768px) and (max-width: 991px){
         width: ${props => props.widthLandscape};
         height: 80%;
     }

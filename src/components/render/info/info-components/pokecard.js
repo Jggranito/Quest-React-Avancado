@@ -70,7 +70,6 @@ const CardName = styled.div`
     padding: 10px 0 0 10px;
     gap: 5px;
     text-transform: uppercase;
-
     @media (max-width: 767px) {
         width: 100%;
     }

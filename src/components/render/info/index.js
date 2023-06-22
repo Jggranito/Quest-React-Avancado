@@ -1,12 +1,14 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom"
 import styled from "styled-components"
+
 import { getInfo } from "../../objects/info";
-import { useEffect, useState } from "react";
+import { MainBackground } from "../../global/mainBackground";
+import { MainText } from "../../global/text";
 import './types.css'
 import { InfoContainer } from "./info-components/container";
 import { PokeCard } from "./info-components/pokecard"
-import { MainBackground } from "../../global/mainBackground";
-import { MainText } from "../../global/text";
+
 
 export const MoreInfo = () => {
     const { state: { pokemon } } = useLocation();
@@ -70,7 +72,7 @@ const AnimatedLoading = styled.img`
     width: 400px;
     height: 100px;
     transform: scaleX(-1);
-    @media (max-width: 480px) {
+    @media (max-width: 767px) {
         width: 300px;
         height: 75px;
     }

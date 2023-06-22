@@ -23,7 +23,7 @@ export const Cards = (props) => {
                 >
                     <PokeCard bgColor={theme.cardBackgroundColor}>
                         <SpritePokeCard>
-                            <img src={pokemon.sprites.spriteAnimatedUrl} alt={pokemon.name} style={{ maxWidth: '100%' }} />
+                            <img src={pokemon.sprites.spriteAnimatedUrl} alt={pokemon.name} />
                         </SpritePokeCard>
                         <InfoPokeCard>
                             <Name color={theme.text.main.color} shadow={theme.text.main.shadow}>{pokemon.name}</Name>
@@ -47,14 +47,12 @@ export const Cards = (props) => {
         })
     )
 }
-
 const PokeCard = styled.li`
     display: flex;
     background-color: ${props => props.bgColor};
     border-radius: 200px 70px 70px 200px;
     gap: 10px;
 `;
-
 const SpritePokeCard = styled.div`
     width: 112px;
     height: 112px;
@@ -63,13 +61,11 @@ const SpritePokeCard = styled.div`
     align-items: center;
     justify-content: center;
 `;
-
 const InfoPokeCard = styled.div`
     padding: 9px 8px 9px 0;
     display: flex;
     flex-direction: column;
 `;
-
 const Name = styled.p`
     color: ${props => props.color};
     font-size: 30px;
@@ -80,7 +76,6 @@ const Name = styled.p`
     text-transform: capitalize;
     letter-spacing: 1px;
 `;
-
 const Details = styled.div`
     display: flex;
     justify-content: space-between;
@@ -88,23 +83,19 @@ const Details = styled.div`
     align-self: stretch;
     height: 100%;
 `;
-
 const IconTypes = styled.div`
     display: flex;
     align-self: end;
     gap: 7px;
 `;
-
 const IconType = styled.div`
     width: 26px;
     height: 26px;
     filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 0px 4px);
 `;
-
 const Img = styled.img`
     width: 100%;
 `;
-
 const PokeIdPokemon = styled.p`
     align-self: flex-end;
     font-family: 'Open Sans', Arial, sans-serif;

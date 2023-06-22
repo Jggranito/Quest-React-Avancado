@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { useLocation } from "react-router-dom"
 import { useContext } from "react"
+
 import { ThemeContext } from "../../../../../../context/themeContext"
 import { MainText, SubText } from "../../../../../global/text"
 
@@ -56,14 +57,13 @@ export const General = (props) => {
         </GeneralContainer>
     )
 }
-
 const GeneralContainer = styled.div`
     width: 40.625rem;
     height: 26.25rem;
     border-radius: 25px;
     background-color: #85DE8C;
     padding-top: 25px;
-    justify-content: right;
+    justify-content: flex-end;
     box-shadow: -2px -2px 0 #32363B, 2px -2px 0 #32363B, -2px 2px 0 #32363B, 2px 2px 0 #32363B;
     display: ${props => props.display};
     @media (max-width: 767px) {
@@ -162,7 +162,6 @@ export const TypesContainer = styled.div`
         gap: 7px;
     }
 `
-
 const StatsBgLine = styled.div`
     width: 300px;
     height: 50px;

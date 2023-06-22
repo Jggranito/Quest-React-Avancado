@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState, useContext } from "react";
-import { ThemeContext } from "../../../../context/themeContext"
 import { SubText } from "../../text";
+import { ThemeContext } from "../../../../context/themeContext"
 
 export const FilterByType = (props) => {
     const [selectFilter, setSelectFilter] = props.filter;
@@ -55,7 +55,7 @@ export const FilterByType = (props) => {
             <FilterByTypeActive display={display}>
                 {
                     types.map((type, index) => (
-                        <FilterByTypeList hoverBgColor={theme.filters.hoverBgColor}>
+                        <FilterByTypeList key={index} hoverBgColor={theme.filters.hoverBgColor}>
                             <li key={index} onClick={() => handleDisplay('none', index)}>
                                 <img src={type.icon} alt={`type ${type.name}`} />
                                 <SubText FontSize='28px'>{type.name}</SubText>
@@ -68,7 +68,6 @@ export const FilterByType = (props) => {
         </FilterByTypeContainer>
     )
 }
-
 const FilterByTypeContainer = styled.div`
     width: 250px;
     height: ${props => props.heightFilter};
@@ -79,12 +78,11 @@ const FilterByTypeContainer = styled.div`
     transition: all 0.2s ease 0s;
     line-height: 0;
     cursor: pointer;
-
-    @media (max-width: 480px){
+    @media (max-width: 767px){
         width: ${props => props.widthFilterMobile};
         padding: 2px 0 0 10px;
     }
-    @media (min-width: 480px) and (max-width: 800px){
+    @media (min-width: 768px) and (max-width: 991px){
         width: 40%;
         height: ${props => props.heightFilterMobile};
         p{
@@ -105,7 +103,6 @@ const Div = styled.div`
     height: 100%;
     padding-left: 5%;
     margin: -2% 0;
-
     :hover{
         background-color: ${props => props.hoverBgColor};
         width: 110%;
@@ -142,7 +139,7 @@ const FilterByTyeSelected = styled.div`
     gap: 10px;
     .filter-tittle{
         line-height: 0px;
-        @media (max-width: 480px){
+        @media (max-width: 767px){
             display: none;
         }
     }
@@ -159,13 +156,13 @@ const FilterByTypeActive = styled.div`
     height: 450px;
     display: ${props => props.display};
     cursor: pointer;
-    @media (max-width: 480px) {
+    @media (max-width: 767px) {
         padding: 0;
         p{
             line-height: 42px;
         }
     }
-    @media (min-width: 480px) and (max-width: 800px){
+    @media (min-width: 768px) and (max-width: 991px){
         padding: 0;
         height: 86%;
         p{
@@ -180,18 +177,15 @@ const FilterByTypeList = styled.ul`
         gap: 10px;
         line-height: 50px;
         padding-left: 5%;
-
         img {
             width: 28px;
             height: 28px;
         }
-
         hr {
             width: 107%;
             margin-left: -14px;
             border-top-color: rgba(56, 56, 56, 0.3);
         }
-
         :hover{
             background-color: ${props => props.hoverBgColor};
         }

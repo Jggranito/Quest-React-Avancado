@@ -1,10 +1,10 @@
-import { getPokemon, getPokedex } from "../../api/api";
+import { fetchPokemon, fetchPokedex } from "../../api/api";
 
 export const setPokedex = async (start, filter, filterName) => {
   const pokedex = {
     infoPokemon: [],
     async setPokemonData(pokemonName, index, type) {
-      const pokemon = await getPokemon(pokemonName, type);
+      const pokemon = await fetchPokemon(pokemonName, type);
       const name = pokemon.name
       const sprites = {
         simpleSprite: pokemon.sprites.other["official-artwork"].front_default,
@@ -23,7 +23,7 @@ export const setPokedex = async (start, filter, filterName) => {
     },
   };
 
-  const responsePokedex = filterName === '' ? await getPokedex(start, filter) : await getPokemon(filterName)
+  const responsePokedex = filterName === '' ? await fetchPokedex(start, filter) : await fetchPokemon(filterName)
   if (responsePokedex.results || responsePokedex.pokemon) {
     await Promise.all(filter === 0 ? responsePokedex.results.map(async (pokemonName, index) => {
       await pokedex.setPokemonData(pokemonName.name, index, filter);

@@ -13,6 +13,15 @@ export const InfoContainer = (props) => {
     const [statsButtonActived, setStatsButtonActived] = useState(false);
     const [movesButtonActived, setMovesButtonActived] = useState(false);
 
+    const btnIcons = {
+        generalDisable: '/Quest-React-Avancado/images/buton-icons/general.png',
+        generalActived: '/Quest-React-Avancado/images/buton-icons/general-actived.png',
+        statsDisable: '/Quest-React-Avancado/images/buton-icons/stats.png',
+        statusActived: '/Quest-React-Avancado/images/buton-icons/stats-actived.png',
+        movesDisable: '/Quest-React-Avancado/images/buton-icons/moves.png',
+        movesActived: '/Quest-React-Avancado/images/buton-icons/moves-actived.png'
+    }
+    
     const changeCard = (cardNumber) => {
         const displays = {
             1: { general: 'flex', stats: 'none', moves: 'none' },
@@ -32,13 +41,13 @@ export const InfoContainer = (props) => {
             <Info>
                 <InfoButtons>
                     <BtnGeneral className={generalButtonActived ? "actived btn-card" : "btn-card"} onClick={() => changeCard(1)}>
-                        <BtnIcon src={generalButtonActived ? "/Quest-React-Avancado/images/buton-icons/general-actived.png" : "/Quest-React-Avancado/images/buton-icons/general.png"} alt="general" />
+                        <BtnIcon src={generalButtonActived ? btnIcons.generalActived : btnIcons.generalDisable} alt="general" />
                     </BtnGeneral>
                     <BtnStats className={statsButtonActived ? "actived btn-card" : "btn-card"} onClick={() => changeCard(2)}>
-                        <BtnIcon src={statsButtonActived ? "/Quest-React-Avancado/images/buton-icons/stats-actived.png" : "/Quest-React-Avancado/images/buton-icons/stats.png"} alt="status" />
+                        <BtnIcon src={statsButtonActived ? btnIcons.statusActived : btnIcons.statsDisable} alt="status" />
                     </BtnStats>
                     <BtnMoves className={movesButtonActived ? "actived btn-card" : "btn-card"} onClick={() => changeCard(3)}>
-                        <BtnIcon src={movesButtonActived ? "/Quest-React-Avancado/images/buton-icons/moves-actived.png" : "/Quest-React-Avancado/images/buton-icons/moves.png"} alt="moves" />
+                        <BtnIcon src={movesButtonActived ? btnIcons.movesActived : btnIcons.movesDisable} alt="moves" />
                     </BtnMoves>
                 </InfoButtons>
                 <Container>
