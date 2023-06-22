@@ -1,10 +1,18 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { useContext } from 'react'
+import { ThemeContext } from '../../../context/themeContext'
 
 export const Cards = (props) => {
     const pokemons = props.pokemons
+    const limit = props.limit
+    const { theme } = useContext(ThemeContext)
+
     return (
         pokemons.map((pokemon, index) => {
+
+            if (index === limit) return null
+
             return (
                 <Link
                     key={index}
@@ -13,12 +21,12 @@ export const Cards = (props) => {
                     className={pokemon.types[1]}
                     style={{ height: '112px', transition: 'all 0.3s ease 0s' }}
                 >
-                    <PokeCard>
+                    <PokeCard bgColor={theme.cardBackgroundColor}>
                         <SpritePokeCard>
-                            <img src={pokemon.sprites.spriteAnimatedUrl} alt={pokemon.name} style={{maxWidth: '100%'}}/>
+                            <img src={pokemon.sprites.spriteAnimatedUrl} alt={pokemon.name} style={{ maxWidth: '100%' }} />
                         </SpritePokeCard>
                         <InfoPokeCard>
-                            <Name>{pokemon.name}</Name>
+                            <Name color={theme.text.main.color} shadow={theme.text.main.shadow}>{pokemon.name}</Name>
                             <Details>
                                 <IconTypes>
                                     <IconType>
@@ -30,7 +38,7 @@ export const Cards = (props) => {
                                         )}
                                     </IconType>
                                 </IconTypes>
-                                <PokeIdPokemon>#{pokemon.id}</PokeIdPokemon>
+                                <PokeIdPokemon color={theme.text.main.color} shadow={theme.text.main.shadow}>#{pokemon.id}</PokeIdPokemon>
                             </Details>
                         </InfoPokeCard>
                     </PokeCard>
@@ -42,7 +50,7 @@ export const Cards = (props) => {
 
 const PokeCard = styled.li`
     display: flex;
-    background-color: rgba(56, 56, 56, 0.3);
+    background-color: ${props => props.bgColor};
     border-radius: 200px 70px 70px 200px;
     gap: 10px;
 `;
@@ -58,21 +66,15 @@ const SpritePokeCard = styled.div`
 
 const InfoPokeCard = styled.div`
     padding: 9px 8px 9px 0;
-    color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
 `;
 
 const Name = styled.p`
-    @font-face {
-        font-family: 'Open Sans';
-        src: url('/Quest-React-Avancado/font/pokemon-dp-pro.ttf') format('truetype');
-    }
-    font-family: 'Open Sans', Arial, sans-serif;
-    color: #F8F8F8;
-    font-size: 22px;
-    text-shadow: 1px 1px 1px #32363B;
-    width: 120px;
+    color: ${props => props.color};
+    font-size: 30px;
+    text-shadow: ${props => props.shadow};
+    min-width: 120px;
     font-weight: 500;
     margin-bottom: 7px;
     text-transform: capitalize;
@@ -105,13 +107,9 @@ const Img = styled.img`
 
 const PokeIdPokemon = styled.p`
     align-self: flex-end;
-    @font-face {
-        font-family: 'Open Sans';
-        src: url('/Quest-React-Avancado/font/pokemon-dp-pro.ttf') format('truetype');
-    }
     font-family: 'Open Sans', Arial, sans-serif;
-    color: #F8F8F8;
+    color: ${props => props.color};
     font-size: 20px;
-    text-shadow: 1px 1px 1px #32363B;
+    text-shadow: ${props => props.shadow};
     letter-spacing: 2px
 `;

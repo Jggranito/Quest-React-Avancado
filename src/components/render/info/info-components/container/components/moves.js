@@ -1,36 +1,39 @@
-import styled from "styled-components"
-import { useState } from "react";
+import styled from "styled-components";
+import { useContext, useState } from "react";
 import { TypesContainer } from "./general";
 import { InfoMoves } from "./info-moves";
+import { ThemeContext } from "../../../../../../context/themeContext";
+import { MainText, SubText } from "../../../../../global/text";
 
 export const Moves = (props) => {
-    const info = props.info
-    const display = props.display
-    const [selectedValue, setSelectedValue] = useState('levelUp')
-    const [selectedIndex, setSelectedIndex] = useState('0')
-    const [isOpen, setIsOpen] = useState(false)
-    const [arrowController, setArrowController] = useState(1)
+    const info = props.info;
+    const display = props.display;
+    const [selectedValue, setSelectedValue] = useState('levelUp');
+    const [selectedIndex, setSelectedIndex] = useState('0');
+    const [isOpen, setIsOpen] = useState(false);
+    const [arrowController, setArrowController] = useState(1);
+    const { theme } = useContext(ThemeContext);
 
     const handleChange = (event) => {
-        setSelectedValue(event)
+        setSelectedValue(event);
     }
 
-    let sorted = false
+    let sorted = false;
     while (!sorted) {
-        sorted = true
+        sorted = true;
         for (let x = 1; x < info.moves.levelUp.length; x++) {
             if (info.moves.levelUp[x].levelLearned < info.moves.levelUp[x - 1].levelLearned) {
-                const temp = info.moves.levelUp[x]
-                info.moves.levelUp[x] = info.moves.levelUp[x - 1]
-                info.moves.levelUp[x - 1] = temp
-                sorted = false
+                const temp = info.moves.levelUp[x];
+                info.moves.levelUp[x] = info.moves.levelUp[x - 1];
+                info.moves.levelUp[x - 1] = temp;
+                sorted = false;
             }
         }
     }
 
     const showMoveDetails = (i) => {
         if (selectedIndex !== i) {
-            setSelectedIndex(i)
+            setSelectedIndex(i);
         }
         setIsOpen(true);
     }
@@ -43,26 +46,33 @@ export const Moves = (props) => {
             4: 'tutor',
         };
         const selectedValue = options[newArrowController];
-
         setArrowController(newArrowController);
         setSelectedValue(selectedValue);
     }
 
     return (
-        <>
+        <div className="moves" style={{ height: '77%' }}>
             <Container display={display}>
                 <Content>
                     <SwitchStats>
                         <MoveOriginFilter>
-                            <Options className="desktop">
-                                <MainText>Moves learnt by:</MainText>
-                                <MainText className={(selectedValue === 'levelUp') ? "select" : "disable"} onClick={() => handleChange('levelUp')}>Level up</MainText>
-                                <MainText className={(selectedValue === 'tm') ? "select" : "disable"} onClick={() => handleChange('tm')}>TM</MainText>
-                                <MainText className={(selectedValue === 'egg') ? "select" : "disable"} onClick={() => handleChange('egg')}>Egg</MainText>
-                                <MainText className={(selectedValue === 'tutor') ? "select" : "disable"} onClick={() => handleChange('tutor')}>Tutor</MainText>
+                            <Options className="desktop" colorDisable={theme.text.disabled.color} underLine={theme.text.disabled.underLineColor}>
+                                <MainText FontSize='40px'>Moves learnt by:</MainText>
+                                <div onClick={() => handleChange('levelUp')}>
+                                    <MainText ClassName={(selectedValue === 'levelUp') ? "select" : "disable"} FontSize='40px'>Level up</MainText>
+                                </div>
+                                <div onClick={() => handleChange('tm')}>
+                                    <MainText ClassName={(selectedValue === 'tm') ? "select" : "disable"} FontSize='40px'>TM</MainText>
+                                </div>
+                                <div onClick={() => handleChange('egg')}>
+                                    <MainText ClassName={(selectedValue === 'egg') ? "select" : "disable"} FontSize='40px'>Egg</MainText>
+                                </div>
+                                <div onClick={() => handleChange('tutor')}>
+                                    <MainText ClassName={(selectedValue === 'tutor') ? "select" : "disable"} FontSize='40px'>Tutor</MainText>
+                                </div>
                             </Options>
                             <OptionsMobile className="mobile">
-                                <MainText className="text">Moves by:</MainText>
+                                <MainText ClassName="text">Moves by:</MainText>
                                 {
                                     arrowController > 1 ?
                                         <ArrowContainer onClick={() => controller(-1)}>
@@ -73,39 +83,40 @@ export const Moves = (props) => {
                                             <Arrow className="disabled" src="/Quest-React-Avancado/images/buton-icons/arrow.png" />
                                         </ArrowContainer>
                                 }
-                                <MainText className={(selectedValue === 'levelUp') ? "select" : "disable"} onClick={() => handleChange('levelUp')}>Level</MainText>
-                                <MainText className={(selectedValue === 'tm') ? "select" : "disable"} onClick={() => handleChange('tm')}>TM</MainText>
-                                <MainText className={(selectedValue === 'egg') ? "select" : "disable"} onClick={() => handleChange('egg')}>Egg</MainText>
-                                <MainText className={(selectedValue === 'tutor') ? "select" : "disable"} onClick={() => handleChange('tutor')}>Tutor</MainText>
+                                <MainText ClassName={(selectedValue === 'levelUp') ? "select" : "disable"} onClick={() => handleChange('levelUp')} FontSize='40px'>Level</MainText>
+                                <MainText ClassName={(selectedValue === 'tm') ? "select" : "disable"} onClick={() => handleChange('tm')} FontSize='40px'>TM</MainText>
+                                <MainText ClassName={(selectedValue === 'egg') ? "select" : "disable"} onClick={() => handleChange('egg')} FontSize='40px'>Egg</MainText>
+                                <MainText ClassName={(selectedValue === 'tutor') ? "select" : "disable"} onClick={() => handleChange('tutor')} FontSize='40px'>Tutor</MainText>
                                 {
                                     arrowController < 4 ?
                                         <ArrowContainer className="btn-area" onClick={() => controller(1)}>
-                                            <Arrow className="btn" src="/Quest-React-Avancado/images/buton-icons/arrowR.png" />
+                                            <Arrow className="btn right" src="/Quest-React-Avancado/images/buton-icons/arrowR.png" />
                                         </ArrowContainer>
                                         :
                                         <ArrowContainer>
-                                            <Arrow className="disabled" src="/Quest-React-Avancado/images/buton-icons/arrowR.png" />
+                                            <Arrow className="disabled right" src="/Quest-React-Avancado/images/buton-icons/arrowR.png" />
                                         </ArrowContainer>
                                 }
                             </OptionsMobile>
                         </MoveOriginFilter>
                     </SwitchStats>
                     <ContentMoves>
-                        <ul style={{height: '100%'}}>
+                        <ul>
                             {info.moves[selectedValue].map((move, index) => (
                                 <li key={index}>
                                     <ContainerMoves onClick={() => showMoveDetails(index)} selectedIndex={selectedIndex} index={index}>
                                         <TextMove>
                                             <TypesContainer>
-                                                <MainText className={'type type-' + move.type}>{move.type}</MainText>
+                                                <MainText ClassName={'type type-' + move.type} FontSize='40px'>{move.type}</MainText>
                                             </TypesContainer>
-                                            <MainText className="move">{move.name}</MainText>
-                                            {move.levelLearned ? <MainText className="level">Level - {move.levelLearned}</MainText> : ''}
+                                            <MainText ClassName="move" FontSize='40px'>{move.name}</MainText>
+                                            {move.levelLearned ? <MainText ClassName="level" FontSize='40px'>Level - {move.levelLearned}</MainText> : ''}
                                         </TextMove>
-                                        <ContainerPP>
+                                        <ContainerPP className={selectedValue}>
+                                            {move.levelLearned ? <MainText ClassName="level" FontSize='40px'>Level - {move.levelLearned}</MainText> : ''}
                                             <ContentPP>
-                                                <SubText>PP</SubText>
-                                                <SubText>{move.pp}/{move.pp}</SubText>
+                                                <SubText FontSize='40px'>PP</SubText>
+                                                <SubText FontSize='40px'>{move.pp}/{move.pp}</SubText>
                                             </ContentPP>
                                         </ContainerPP>
                                     </ContainerMoves>
@@ -116,7 +127,7 @@ export const Moves = (props) => {
                 </Content>
             </Container>
             <InfoMoves info={info} selectedValue={selectedValue} selectedIndex={[selectedIndex, setSelectedIndex]} display={display} isOpen={[isOpen, setIsOpen]} />
-        </>
+        </div>
     )
 }
 
@@ -129,12 +140,17 @@ const Container = styled.div`
     position: relative;
     box-shadow: -2px -2px 0 #32363B, 2px -2px 0 #32363B, -2px 2px 0 #32363B, 2px 2px 0 #32363B;
     overflow: hidden;
-    @media (max-width: 480px) {
-        border-radius: 30px;
-        top: 34.1%;
-        margin-left: 4%;
-        width: 95%;
-        height: 62%;
+    @media (max-width: 767px) {
+        border-radius: 1.875rem;
+        top: -3rem;
+        width: 100%;
+        height: 18rem;
+    }
+    @media (min-width: 768px) and (max-width: 991px){
+        width: 100%;
+        border-radius: 1.875rem;
+        top: 0.5rem;
+        height: 17rem;
     }
 `
 const Content = styled.div`
@@ -147,41 +163,9 @@ const SwitchStats = styled.div`
     display: flex;
     align-items: center;
     padding-left: 30px;
-    @media (max-width: 480px) {
+    @media (max-width: 991px) {
         height: 32px;
         padding-left: 10px;
-    }
-`
-const MainText = styled.p`
-@font-face {
-        font-family: 'Open Sans';
-        src: url('/Quest-React-Avancado/font/pokemon-dp-pro.ttf') format('truetype');
-    }
-    font-family: 'Open Sans', Arial, sans-serif;
-    color: #f8f8f8;
-    font-size: 40px;
-    text-shadow: 2px 2px 2px #32363B;
-    height: 42px;
-    @media (max-width: 480px) {
-        font-size: 29px;
-        height: 32px;
-        text-shadow: 1px 1px 1px #32363B;
-    }
-`
-const SubText = styled.p`
-@font-face {
-        font-family: 'Open Sans';
-        src: url('/Quest-React-Avancado/font/pokemon-dp-pro.ttf') format('truetype');
-    }
-    font-family: 'Open Sans', Arial, sans-serif;
-    color: #252A30;
-    text-transform: uppercase;
-    font-size: 40px;
-    text-shadow: 2px 2px 3px #BCBCBC;
-    height: 42px;
-    @media (max-width: 480px) {
-        font-size: 29px;
-        height: 28px;
     }
 `
 const MoveOriginFilter = styled.div`
@@ -198,14 +182,14 @@ const MoveOriginFilter = styled.div`
     .mobile{
         display: none;
     }
-    @media (max-width: 480px) {
-        font-size: 12px;
-        gap: 25px;
+    @media (max-width: 991px) {
+        margin: 0;
         .desktop{
             display: none;
         }
         .mobile {
             display: flex;
+            align-items: center;
         }
     }
 `
@@ -214,10 +198,10 @@ const Options = styled.div`
     gap: 20px;
     .disable{
         cursor: pointer;
-        color: #999999;
+        color: ${props => props.colorDisable};
     }
     .select{
-        text-decoration: underline #EA1C26;
+        text-decoration: underline ${props => props.underLine};
     }
 `
 const OptionsMobile = styled.div`
@@ -229,14 +213,16 @@ const OptionsMobile = styled.div`
         filter: grayscale(100%);
     }
     .select{
-        display: block;
-        width: 50px;
+        width: 4rem;
         text-align: center;
     }
     .text {
-        margin-right: 30px;
+        margin: 0;
     }
-    @media (max-width: 480px) {
+    .right {
+        margin-left: 10px;
+    }
+    @media (max-width: 991px) {
         .desktop {
             display: none;
         }
@@ -246,30 +232,35 @@ const ContentMoves = styled.div`
     width: 100%;
     height: 378px;
     overflow-y: auto;
+    ul {
+        height: 100%;
+    }
     ::-webkit-scrollbar{
         background-color: #f5f5f5;
-        height: 100px;
         border-radius: 6px;
     }
-    @media (max-width: 480px){
-        height: 91%;
+    @media (max-width: 991px){
+        height: 87%;
     }
 `
 const ContainerMoves = styled.div`
     cursor: pointer;
     padding: 5px;
-    border: ${props => props.selectedIndex === props.index ? '5px solid rgb(234, 28, 38); padding: 0px;' : 'none'};
+    border: ${props => props.selectedIndex === props.index ? '5px solid #EA1C26; padding: 0px;' : 'none'};
     :hover{
         border: none;
         padding: 5px;
-        box-shadow: inset 0 0 0 5px rgb(255, 5, 5);
+        box-shadow: inset 0 0 0 5px #EA0505;
     }
-    @media (max-width: 480px) {
+    @media (max-width: 991px) {
         padding: 3px;
-        border: ${props => props.selectedIndex === props.index ? '3px solid rgb(234, 28, 38); padding: 0px;' : 'none'};
+        border: ${props => props.selectedIndex === props.index ? '3px solid #EA1C26; padding: 0px;' : 'none'};
+        .levelUp{
+            justify-content: space-between; 
+        }
         :hover{
             padding: 3px;
-            box-shadow: inset 0 0 0 2px rgb(255, 5, 5);
+            box-shadow: inset 0 0 0 2px #EA0505;
         }
     }
 `
@@ -278,8 +269,8 @@ const TextMove = styled.div`
     display: flex;
     align-items: center;
     background-color: #F0A8A0;
-    gap: 8px;
-    padding-left: 100px;
+    gap: 50px;
+    padding-left: 30px;
     .type {
         width: 150px;
         height: 40px;
@@ -289,20 +280,36 @@ const TextMove = styled.div`
     .move {
         width: 200px;
         text-transform: capitalize;
-        justify-content: left;
+        justify-content: space-between;
     }
-    @media (max-width: 480px) {
+    .level{
+        width: 150px;
+        justify-content: right;
+        margin-right: 20px;
+    }
+    @media (max-width: 991px) {
         height: 28px;
         padding-left: 20px;
-        gap: 20px;
+        gap: 10px;
         .type{
             width: 95px;
             height: 25px;
             border-radius: 6px;
             padding: 0;
         }
+        .move{
+            font-size: 28px;
+            padding: 0;
+            justify-content: space-evenly;
+        }
         .level {
             display: none;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 991px){
+        gap: 50px;
+        .move{
+            justify-content: space-between;
         }
     }
 `
@@ -311,8 +318,17 @@ const ContainerPP = styled.div`
     display: flex;
     align-items: center;
     justify-content: right;
-    @media (max-width: 480px) {
+    .level{
+        display: none;
+    }
+    @media (max-width: 991px) {
         height: 28px;
+        margin-left: 0.3rem;
+        .level{
+            display: flex;
+            justify-content: left;
+            font-size: 28px;
+        }
     }
 `
 const ContentPP = styled.div`
@@ -323,7 +339,7 @@ const ContentPP = styled.div`
     background: #F0F8F8;
     border-radius: 20px;
     margin-right: 100px;
-    @media (max-width: 480px) {
+    @media (max-width: 991px) {
         height: 26px;
         width: 120px;
         margin-right: 10px;
@@ -336,7 +352,7 @@ const ArrowContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    @media (max-width: 480px) {
+    @media (max-width: 991px) {
         width: 32px;
         height: 32px;
     }

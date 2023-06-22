@@ -1,6 +1,6 @@
 import { getPokemon, getPokedex } from "../../api/api";
 
-export const setPokedex = async (start, filter) => {
+export const setPokedex = async (start, filter, filterName) => {
   const pokedex = {
     infoPokemon: [],
     async setPokemonData(pokemonName, index, type) {
@@ -23,15 +23,19 @@ export const setPokedex = async (start, filter) => {
     },
   };
 
-  const responsePokedex = await getPokedex(start, filter);
-  await Promise.all(filter === 0 ? responsePokedex.results.map(async (pokemonName, index) => {
-    await pokedex.setPokemonData(pokemonName.name, index, filter);
-  }) 
-  :
-  responsePokedex.pokemon.map(async (pokemonName, index) => {
-    await pokedex.setPokemonData(pokemonName.pokemon.url, index, filter);
-  })
-  );
+  const responsePokedex = filterName === '' ? await getPokedex(start, filter) : await getPokemon(filterName)
+  if (responsePokedex.results || responsePokedex.pokemon) {
+    await Promise.all(filter === 0 ? responsePokedex.results.map(async (pokemonName, index) => {
+      await pokedex.setPokemonData(pokemonName.name, index, filter);
+    })
+      :
+      responsePokedex.pokemon.map(async (pokemonName, index) => {
+        await pokedex.setPokemonData(pokemonName.pokemon.url, index, filter);
+      })
+    )
+  } else {
+    await pokedex.setPokemonData(responsePokedex.name, 0, 0);
+  }
 
   return pokedex.infoPokemon;
 };

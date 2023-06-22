@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { useLocation } from "react-router-dom"
-
+import { MainText, SubText } from "../../../global/text";
 
 export const PokeCard = () => {
     const { state: { pokemon } } = useLocation();
@@ -8,11 +8,11 @@ export const PokeCard = () => {
         <PokeCardContainer>
             <CardNameContainer>
                 <CardName>
-                    <img src='/Quest-React-Avancado/images/pokeball.png' alt='pokeball' width={'40px'} />
-                    <Text className="text">{pokemon.name}</Text>
+                    <img className="pokeball-img" src='/Quest-React-Avancado/images/pokeball.png' alt='pokeball' />
+                    <MainText ClassName='name' FontSize='50px'>{pokemon.name}</MainText>
                 </CardName>
                 <CardSubTextContainer>
-                    <SubText className="text-level">Lv.9</SubText>
+                    <SubText ClassName='lv' FontSize='45px'>Lv.9</SubText>
                 </CardSubTextContainer>
             </CardNameContainer>
             <div>
@@ -24,29 +24,6 @@ export const PokeCard = () => {
         </PokeCardContainer>
     )
 }
-
-const Text = styled.p`
-    @font-face {
-        font-family: 'Open Sans';
-        src: url('/Quest-React-Avancado/font/pokemon-dp-pro.ttf') format('truetype');
-    }
-    font-family: 'Open Sans', Arial, sans-serif;
-    color: #f8f8f8;
-    font-size: 40px;
-    text-shadow: 2px 2px 2px #32363B;
-`
-const SubText = styled.p`
-    @font-face {
-        font-family: 'Open Sans';
-        src: url('/Quest-React-Avancado/font/pokemon-dp-pro.ttf') format('truetype');
-    }
-    font-family: 'Open Sans', Arial, sans-serif;
-    color: #242C35;
-    font-size: 40px;
-    text-shadow: 2px 2px 3px #BCBCBC;
-    line-height: 42px;
-`
-
 const PokeCardContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -54,20 +31,39 @@ const PokeCardContainer = styled.div`
     height: 100px;
     align-items: center;
     gap: 20px;
+    @media (max-width: 767px) {
+        width: 100%;
+        gap: 25px;
+    }
+    @media (min-width: 768px) and (max-width: 991px){
+        width: 40%;
+    }
 `
-
 const CardNameContainer = styled.div`
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
     border-radius: 20px;
-    @media (max-width: 480px) {
-        margin-left: 4%;
-        width: 90%;
+    .pokeball-img{
+        width: 13%;
+        margin: -2% 0 0 1%;
+    }
+    .name{
+        margin: 0 0 5px 8px;
+        @media (max-width: 991px) {
+            font-size: 50px;
+        }
+    }
+    @media (max-width: 767px) {
+        height: 75%;
+    }
+    @media (min-width: 768px) and (max-width: 991px){
+        width: 85%;
+        height: 75%;
     }
 `
 const CardName = styled.div`
-    width: 380px;
+    width: 23.75rem;
     background-color: #FFCF51;
-    height: 50px;
+    height: 3.125rem;
     border-radius: 20px 20px 0 0;
     display: flex;
     align-items: center;
@@ -75,30 +71,42 @@ const CardName = styled.div`
     gap: 5px;
     text-transform: uppercase;
 
-    .text {
-        margin: 0 0 5px 8px;
-    }
-    @media (max-width: 480px) {
+    @media (max-width: 767px) {
         width: 100%;
     }
+    @media (min-width: 768px) and (max-width: 991px){
+        width: 100%;
+        height: 50%;
+        padding: 5px 0 0 10px;
+        .name{
+            line-height: 45px;
+            font-size: 40px;
+        }
+    }
 `
-
 const CardSubTextContainer = styled.div`
     background-color: #ffffff;
     height: 40px;
     border-radius: 0 0 20px 20px;
     padding: 0 0 0 20px;
-
-    .text-level {
-        text-shadow: 1px 1px 1px #0B161A;
-        font-size: 40px;
-        color: #252A30;
+    @media (max-width: 767px) {
+        .lv{
+            padding-top: 2%;
+            font-size: 40px;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 991px){
+        height: 50%;
+        .lv{
+            line-height: 38px;
+            font-size: 40px;
+        }
     }
 `
 const CardImageContainer = styled.div`
     position: relative;
-    width: 280px;
-    height: 280px;
+    width: 17.5rem;
+    height: 17.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,22 +121,32 @@ const CardBgImage = styled.div`
     background-position: center;
     background-size: cover;
     z-index: -1;
-    @media (max-width: 480px) {
+    @media (max-width: 767px) {
         top: -5%;
         left: 12%;
         width: 80%;
         height: 80%;
     }
+    @media (min-width: 768px) and (max-width: 991px){
+        top: -4%;
+        left: 20%;
+        width: 60%;
+        height: 60%;
+    }
 `
-
 const CardImageSprite = styled.img`
     width: 300px;
     z-index: 0;
     transform: scaleX(-1);
-    @media (max-width: 480px) {
+    @media (max-width: 767px) {
         position: absolute;
         top: -4%;
         left: 15%;
         width: 75%;
+    }
+    @media (min-width: 768px) and (max-width: 991px){
+        position: absolute;
+        top: -8%;
+        width: 70%;
     }
 `

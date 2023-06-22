@@ -1,6 +1,6 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Pokemon } from './pokemon'
-import { PokedexList } from './pokedex'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Pokemon } from './pokemon';
+import { PokedexList } from './pokedex';
 
 export const AppRoutes = () => {
     return (

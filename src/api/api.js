@@ -6,13 +6,11 @@ const fetchData = async (url) => {
 };
 
 export const getPokedex = async (start, filter) => {
-  let url
-  filter === 0 ? url = `${apiUrl}pokemon/?offset=${start}&limit=${10}` : url = `${apiUrl}type/${filter}`
+  const url = filter === 0 ? `${apiUrl}pokemon/?offset=${start}&limit=${11}` : `${apiUrl}type/${filter}`
   return await fetchData(url);
 };
 
 export const getPokemon = async (name, type) => {
-  let url
-  !type ? url = `${apiUrl}pokemon/${name}/` : type === 0 ? url = `${apiUrl}pokemon/${name}/` : url = name;
+  const url = !type ?  `${apiUrl}pokemon/${name}/` : type === 0 ? `${apiUrl}pokemon/${name}/` : name;
   return await fetchData(url);
 };

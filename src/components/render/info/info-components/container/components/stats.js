@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { MainText, SubText } from "../../../../../global/text";
 
 export const Stats = (props) => {
     const info = props.info;
@@ -13,16 +14,15 @@ export const Stats = (props) => {
     return (
         <StatsContainer className="stats" display={display}>
             <TextContainer>
-                <MainText className="hp">HP</MainText>
-                <HPBarContainer className="bg-color">
-                </HPBarContainer>
-                <MainText>Attack</MainText>
-                <MainText className="bg-color">Defence</MainText>
-                <MainText>Sp. Atk</MainText>
-                <MainText className="bg-color">Sp. Def</MainText>
-                <MainText>Speed</MainText>
+                <MainText ClassName='hp line' height={'42px'} padding={'0 0 0 90px'} FontSize='40px'>HP</MainText>
+                <HPBarContainer className="bg-color" />
+                <MainText ClassName='line' height={'42px'} padding={'0 0 0 90px'} FontSize='40px'>Attack</MainText>
+                <MainText ClassName='bg-color line' height={'42px'} padding={'0 0 0 90px'} FontSize='40px'>Defence</MainText>
+                <MainText ClassName='line' height={'42px'} padding={'0 0 0 90px'} FontSize='40px'>Sp. Atk</MainText>
+                <MainText ClassName="bg-color line" height={'42px'} padding={'0 0 0 90px'} FontSize='40px'>Sp. Def</MainText>
+                <MainText ClassName='line' height={'42px'} padding={'0 0 0 90px'} FontSize='40px'>Speed</MainText>
                 <AbilityConteiner className="bg-color">
-                    <MainText className="text">Ability</MainText>
+                    <MainText ClassName='text' height={'42px'} FontSize='40px'>Ability</MainText>
                     <AbilityName>
                         {
                             info.abilities[abilityIndex - 1] ?
@@ -34,7 +34,7 @@ export const Stats = (props) => {
                                     <Arrow className="disabled" src="/Quest-React-Avancado/images/buton-icons/arrow.png" />
                                 </ArrowContainer>
                         }
-                        <SubText>{info.abilities[abilityIndex].ability.name}</SubText>
+                        <SubText ClassName='ability-name' FontSize='40px'>{info.abilities[abilityIndex].ability.name}</SubText>
                         {
                             info.abilities[abilityIndex + 1] ?
                                 <ArrowContainer className="btn-area" onClick={() => setIndex(1)}>
@@ -47,19 +47,23 @@ export const Stats = (props) => {
                         }
                     </AbilityName>
                 </AbilityConteiner>
-                <Description>
-                    <SubText className="description">{info.abilities[abilityIndex].ability.description}</SubText>
-                </Description>
+                <ContainerDescription>
+                    <ContentDescription>
+                        <Description>
+                            <SubText ClassName='description' FontSize='40px'>{info.abilities[abilityIndex].ability.description}</SubText>
+                        </Description>
+                    </ContentDescription>
+                </ContainerDescription>
             </TextContainer>
             <Container>
-                <SubText className="stats-hp">{info.stats.hp - 3}/{info.stats.hp}</SubText>
+                <SubText ClassName='stats-hp' FontSize='40px'>{info.stats.hp - 3}/{info.stats.hp}</SubText>
                 <HPBar src="/Quest-React-Avancado/images/hp-bar.png" alt="hp bar" />
                 <CombatStatus>
-                    <SubText>{info.stats.attack}</SubText>
-                    <SubText>{info.stats.defence}</SubText>
-                    <SubText>{info.stats.specialAttack}</SubText>
-                    <SubText>{info.stats.specialDefense}</SubText>
-                    <SubText>{info.stats.speed}</SubText>
+                    <SubText FontSize='40px'>{info.stats.attack}</SubText>
+                    <SubText FontSize='40px'>{info.stats.defence}</SubText>
+                    <SubText FontSize='40px'>{info.stats.specialAttack}</SubText>
+                    <SubText FontSize='40px'>{info.stats.specialDefense}</SubText>
+                    <SubText FontSize='40px'>{info.stats.speed}</SubText>
                 </CombatStatus>
             </Container>
         </StatsContainer>
@@ -67,22 +71,45 @@ export const Stats = (props) => {
 }
 
 const StatsContainer = styled.div`
-    width: 650px;
-    height: 420px;
+    width: 40.625rem;
+    height: 26.25rem;
     display: ${props => props.display};
     border-radius: 25px;
     background-color: #8891F8;
     position: relative;
     justify-content: right;
     box-shadow: -2px -2px 0 #32363B, 2px -2px 0 #32363B, -2px 2px 0 #32363B, 2px 2px 0 #32363B;
-    @media (max-width: 480px) {
-        position: relative;
-        border-radius: 30px;
+    overflow: hidden;
+    @media (max-width: 767px) {
+        border-radius: 1.875rem;
         overflow: hidden;
-        top: 34.1%;
-        margin-left: 4%;
-        width: 95%;
-        height: 62%;
+        top: -3rem;
+        width: 100%;
+        height: 18rem;
+    .line{
+        height: 29px;
+        padding-left: 42px
+        }
+    .ability-name{
+        height: 31px;
+        font-size: 27px;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+        position: relative;
+        border-radius: 1.875rem;
+        overflow: hidden;
+        top: 0.5rem;
+        width: 100%;
+        height: 17rem;
+    .line{
+        height: 29px;
+        padding-left: 42px
+        }
+    .ability-name{
+        height: 29px;
+        font-size: 27px;
+        }
     }
 `
 const TextContainer = styled.div`
@@ -93,44 +120,9 @@ const TextContainer = styled.div`
     }
     .hp {
         margin-left: 38px;
-        @media (max-width: 480px) {
-            margin-left: 20px;
+        @media (max-width: 767px) {
+            margin-left: 30px;
         }
-    }
-`
-const MainText = styled.p`
-@font-face {
-        font-family: 'Open Sans';
-        src: url('/Quest-React-Avancado/font/pokemon-dp-pro.ttf') format('truetype');
-    }
-    font-family: 'Open Sans', Arial, sans-serif;
-    color: #f8f8f8;
-    font-size: 40px;
-    text-shadow: 2px 2px 2px #32363B;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    padding-left: 90px;
-    @media (max-width: 480px) {
-        font-size: 29px;
-        padding-left: 40px;
-        height: 28px;
-        text-shadow: 1px 1px 1px #32363B;
-    }
-`
-const SubText = styled.p`
-@font-face {
-        font-family: 'Open Sans';
-        src: url('/Quest-React-Avancado/font/pokemon-dp-pro.ttf') format('truetype');
-    }
-    font-family: 'Open Sans', Arial, sans-serif;
-    color: #252A30;
-    font-size: 40px;
-    text-shadow: 2px 2px 3px #BCBCBC;
-    height: 42px;
-    @media (max-width: 480px) {
-        font-size: 29px;
-        height: 28px;
     }
 `
 const HPBarContainer = styled.div`
@@ -138,19 +130,19 @@ const HPBarContainer = styled.div`
     display: flex;
     justify-content: right;
     padding-right: 80px;
-    @media (max-width: 480px) {
+    @media (max-width: 991px) {
         height: 12px;
     }
 `
 const HPBar = styled.img`
     width: 250px;
-    height: 17px;
+    height: 20px;
     margin-left: 16px;
-    @media (max-width: 480px) {
+    @media (max-width: 991px) {
         display: flex;
-        align-self: center;
         height: 12px;
         width: 80%;
+        margin-left: 5px;
     }
 `
 const AbilityConteiner = styled.div`
@@ -161,10 +153,10 @@ const AbilityConteiner = styled.div`
     .text{
         padding-left: 40px;
     }
-    @media (max-width: 480px) {
+    @media (max-width: 991px) {
         height: 40px;
         .text{
-            padding-left: 20px;
+            padding-left: 15px;
         }
     }
 `
@@ -200,44 +192,58 @@ const AbilityName = styled.div`
         filter: grayscale(100%);
         cursor: default;
     }
-    @media (max-width: 480px) {
+    @media (max-width: 767px) {
         height: 28px;
         padding: 0;
         justify-content: center;
-
+    }
+    @media (min-width: 768px) and (max-width: 991px){
+        height: 30px;
+    }
+`
+const ContainerDescription = styled.div`
+    height: 96px;
+    @media (max-width: 991px) {
+        height: 43%;
+    }
+`
+const ContentDescription = styled.div`
+    height: 100%;
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+        background-color: #f5f5f5;
+        height: 100px;
+        border-radius: 6px;
+    }
+    @media (max-width: 991px) {
+        height: 52%;
     }
 `
 const Description = styled.div`
-    height: 86px;
-    background: repeating-linear-gradient(to bottom, #F0F8F8 0, #F0F8F8 42px, #F0F0C0 42px,  #F0F0C0 90px);
-    border-radius: 0 0 25px 25px;
-    padding: 0 15px 0 20px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    overflow: hidden;
-    .description {
-        line-height: 40px;
-        overflow-y: auto;
-        height: 100%;
-    }
-    @media (max-width: 480px) {
-        height: 25%;
-        /* padding-bottom: 100px; */
-        padding: 0 10px 0 20px;
-        background: repeating-linear-gradient(to bottom, #F0F8F8 0, #F0F8F8 28px, #F0F0C0 28px,  #F0F0C0 56px);
+    min-height: 110%;
+    width: 100%;
+    background: repeating-linear-gradient( to bottom, #F0F8F8 0, #F0F8F8 42px, #E6E69E 42px, #E6E69E 84px);
+    padding: 0 10px 10px 15px;
+    @media (max-width: 991px) {
+        min-height: 159%;
+        width: 100%;
+        background: repeating-linear-gradient( to bottom, #F0F8F8 0, #F0F8F8 31px, #E6E69E 31px, #E6E69E 62px);
+        padding: 0 10px 14px 15px;
         .description {
-            line-height: 26px;
+            line-height: 31px;
             font-size: 24px;
             text-shadow: 1px 1px 1px #BCBCBC;
-            padding-bottom: 5%;
+            padding: 0;
         }
+    }
+    @media (min-width: 768px) and (max-width: 991px){
+        min-height: 100%;
     }
 `
 const Arrow = styled.img`
     cursor: pointer;
     z-index: 2;
-    @media (max-width: 480px) {
+    @media (max-width: 991px) {
         width: 11px;
     }
 `
@@ -252,9 +258,13 @@ const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        @media (max-width: 480px) {
-            height: 28px;
-            width: 96%;
+        @media (max-width: 991px) {
+            height: 29px;
+            width: 90%;
+            /* margin-left: 0.8rem; */
+        }
+        @media (min-width: 768px) and (max-width: 991px){
+            width: 86%;
         }
     }
 `
@@ -269,12 +279,12 @@ const CombatStatus = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    @media (max-width: 480px) {
-        width: 83%;
-        height: 140px;
-        margin-left: 12px;
+    @media (max-width: 991px) {
+        width: 70%;
+        height: 9.063rem;
+        margin-left: 1rem;
         margin-top: 0;
-        background: repeating-linear-gradient(to bottom, #F0F8F8 0, #F0F8F8 28px, #F0F0C0 28px,  #F0F0C0 56px);
+        background: repeating-linear-gradient(to bottom, #F0F8F8 0, #F0F8F8 29px, #F0F0C0 29px,  #F0F0C0 58px);
     }
 `
 const ArrowContainer = styled.div`
@@ -284,7 +294,7 @@ const ArrowContainer = styled.div`
     align-items: center;
     justify-content: center;
     padding-top: 5px;
-    @media (max-width: 480px) {
+    @media (max-width: 991px) {
         width: 32px;
         height: 32px;
     }
