@@ -4,7 +4,7 @@ const fetchData = async (url) => {
   try {
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error('Erro ao obter os dados da API. \n\nVerifique sua coneção com a internet. \n\nSe você está fazendo uma pesquisa por nome, verifique nome do pokemon foi digitado corretamente.'); // Tratamento de erro para respostas não bem-sucedidas
+      throw new Error('Erro ao obter os dados da API. \n\nVerifique sua coneção com a internet. \n\nSe você está fazendo uma pesquisa por nome, verifique se o nome do pokemon foi digitado corretamente.'); // Tratamento de erro para respostas não bem-sucedidas
     }
     return await response.json();
   } catch (error) {
