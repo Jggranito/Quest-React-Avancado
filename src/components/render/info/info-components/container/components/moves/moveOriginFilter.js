@@ -9,8 +9,6 @@ export const MoveOriginFilter = (props) => {
     const [arrowController, setArrowController] = useState(1);
     const [selectedValue, setSelectedValue] = props.value
 
-    console.log(selectedValue)
-
     const handleChange = (event) => {
         setSelectedValue(event);
     }

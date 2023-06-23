@@ -20,11 +20,9 @@ export const MoreInfo = () => {
         const fetchData = async () => {
             const infoData = await getInfo(pokemon.name)
             setInfo(infoData)
+            if(infoData) setIsLoading(false)
         }
         fetchData();
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 1200);
     }, [pokemon.name])
 
     return (

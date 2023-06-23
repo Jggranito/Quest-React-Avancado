@@ -23,7 +23,7 @@ export const Cards = (props) => {
                 >
                     <PokeCard bgColor={theme.cardBackgroundColor}>
                         <SpritePokeCard>
-                            <img src={pokemon.sprites.spriteAnimatedUrl} alt={pokemon.name} />
+                            <img className="sprite-pokemon" src={pokemon.sprites.spriteAnimatedUrl} alt={pokemon.name} />
                         </SpritePokeCard>
                         <InfoPokeCard>
                             <Name color={theme.text.main.color} shadow={theme.text.main.shadow}>{pokemon.name}</Name>
@@ -60,6 +60,9 @@ const SpritePokeCard = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    .sprite-pokemon{
+        max-width: 100%;
+    }
 `;
 const InfoPokeCard = styled.div`
     padding: 9px 8px 9px 0;
