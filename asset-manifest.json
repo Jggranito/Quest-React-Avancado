@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Quest-React-Avancado/static/css/main.c82eb585.css",
-    "main.js": "/Quest-React-Avancado/static/js/main.a076e846.js",
+    "main.js": "/Quest-React-Avancado/static/js/main.32eebe16.js",
     "static/js/787.f0ba6db2.chunk.js": "/Quest-React-Avancado/static/js/787.f0ba6db2.chunk.js",
     "index.html": "/Quest-React-Avancado/index.html",
     "main.c82eb585.css.map": "/Quest-React-Avancado/static/css/main.c82eb585.css.map",
-    "main.a076e846.js.map": "/Quest-React-Avancado/static/js/main.a076e846.js.map",
+    "main.32eebe16.js.map": "/Quest-React-Avancado/static/js/main.32eebe16.js.map",
     "787.f0ba6db2.chunk.js.map": "/Quest-React-Avancado/static/js/787.f0ba6db2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c82eb585.css",
-    "static/js/main.a076e846.js"
+    "static/js/main.32eebe16.js"
   ]
 }
