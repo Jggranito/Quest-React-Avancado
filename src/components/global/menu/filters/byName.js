@@ -9,6 +9,10 @@ export const FilterByName = (props) => {
 
     const handleChange = (e) => {
         setTempFilterName(e.target.value);
+        if(e.nativeEvent.inputType === 'deleteContentBackward' && (tempFilterName.length - 1) <= 0){
+            setFilterName('')
+            setTempFilterName('')
+        }
     }
 
     const handleKeyDown = (e) => {

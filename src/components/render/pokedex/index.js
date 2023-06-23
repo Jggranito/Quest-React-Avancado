@@ -26,8 +26,6 @@ export function Pokedex() {
         fetchData();
     }, [selectFilter, filterName]);
 
-    console.log(pokemons)
-
     const addPokemon = async () => {
         if (pokemons.length === limit + 1) pokemons.pop();
         console.log(pokemons.length, '', limit);
