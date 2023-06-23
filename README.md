@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Quest React Avançado
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esta é uma solução para a Quest React Avançado. As quests do curso DevQuest do [@devemdobro](instagram.com/devemdobro), são desafios que nos ajudam a aprimorar e desenvolver nossas habilidades de codificação.
 
-## Available Scripts
+## Índice
 
-In the project directory, you can run:
+- [Visão geral](#visão-geral)
+   - [O desafio](#O-desafio)
+   - [Links](#links)
+- [Construído com](#construído-com)
+- [Autor](#autor)
 
-### `npm start`
+### Visão geral
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### O desafio
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+A quest consiste em criar uma pokedex do 0 utilizando apenas os dados fornecidos pela api [pokéapi](https://pokeapi.co/). A página deveria contar uma home com uma lista dos 20 pokemons iniciais, com seus respectipos nome e imagen. Além disso, deveria conter também um botão para carregar mais pokemóns 10 pokemons a listagem atual, e exibi-los na tela.
+Cada pokemon deveria ser clicável e ao clicar o usuário poderia acessar uma página interna desse pokemon, com informações detalhadas como por exemplo tipo, lista de movimentos e habilidades.
+A home também deveria conter um botão para alternar entre tema claro e escuo.
 
-### `npm test`
+Além disso, alguns requisitos técnicos deveriam ser seguidos, eles eram:
+- A aplicação deverá ser Single Page Application (SPA);
+- Utilizar React.js para o desenvolvimento da aplicação;
+- Utilizar Context API para criação do Theme Toggler (Alternador entre tema claro e escuro);
+- Utilizar styled-components para estilização dos componentes;
+- Utilizar react-router-dom para a navegação entre as páginas;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para esse desafio tive liberdade para criar o layout, estilo, estruturar e até adicionar outras funcionalidades como desejasse.
 
-### `npm run build`
+##### Funcionalidades adicionais
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Além das funcionalidades exigidas para o desafio, foi adionado também algumas outras como:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+##### Filtro de exibição
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+O filtro foi adicionado selecionar o que seria exibido na tela inicial, para que o usuário tivesse a opção de escolher apenas um determinado tipo de pokemon ou até mesmo pesquisar por nome ou id algum pokemon específico.
 
-### `npm run eject`
+##### Aba de informação
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+A aba de informação do pokémon selecionada possui três abas de informações, para que o usuário possa visualizar entre:
+- Informações gerais: Possui informçãoes como id do pokemon, nome, tipo e até XP. 
+- Status: Possui informações sobre status de vida, ataque, defesa, abilidade, etc.
+- Movimentos: Nessa aba foram adicionados todos os movimentos que o pokemon pode aprender, filtrados pela forma como são aprendidos. Sejam eles atráves do nivel, TM's, movimentos unicos de pokemons nascidos de ovos e até mesmo movimentos aprendidos atráves de tutores.
+Cada movimento também possui alguns dados como nome, PP (que seria quantas vezes o pokemon pode usar o golpe antes de se curar/descançar novamente) e o tipo.
+Também são clicaveis, exibindo assim uma nova aba contento a categoria do golpe, força e chanse de acerto. Além de contar com a descrição do golpe logo a baixo.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Links
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Repositório disponível em: [https://github.com/Jggranito/Quest-React-Avancado](https://github.com/Jggranito/Quest-React-Avancado)
+- Site ao vivo: [https://jggranito.github.io/Quest-React-Avancado/](https://jggranito.github.io/Quest-React-Avancado/)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Construído com
 
-## Learn More
+- Marcação HTML5 semântica
+- Propriedades personalizadas de CSS
+- Validação com JS
+- API com JS
+- Tratamento de arquivos json
+- Single Page Application (SPA)
+- **React.js**
+- **Context API**
+- **Styled-components**
+- **React-router-dom**
+- Design responsivo
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Autor
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- LinkedIn - [João Gabriel Granito](https://www.linkedin.com/in/jo%C3%A3o-gabriel-granito-77666a262/)
