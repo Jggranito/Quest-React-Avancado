@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState, useContext } from "react";
-import { SubText } from "../../text";
-import { ThemeContext } from "../../../../context/themeContext"
+import { SubText } from "../../../text";
+import { ThemeContext } from "../../../../../context/themeContext"
 
 export const FilterByType = (props) => {
     const [selectFilter, setSelectFilter] = props.filter;

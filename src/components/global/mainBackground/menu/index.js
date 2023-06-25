@@ -3,8 +3,8 @@ import { FilterByType } from "./filters/byType"
 import { FilterByName } from "./filters/byName";
 import { useContext } from "react";
 import { Link } from "react-router-dom"
-import { AnimatedIconTheme } from '../../svg/sunAndMon';
-import { ThemeContext, themes } from '../../../context/themeContext';
+import { AnimatedIconTheme } from '../../../svg/sunAndMon';
+import { ThemeContext, themes } from '../../../../context/themeContext';
 
 export const Menu = (props) => {
     const { filter = '', byName = '' } = props;

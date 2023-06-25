@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import styled from "styled-components";
-import { ThemeContext } from "../../../../context/themeContext";
+import { ThemeContext } from "../../../../../context/themeContext";
 
 export const FilterByName = (props) => {
     const [, setFilterName] = props.byName;

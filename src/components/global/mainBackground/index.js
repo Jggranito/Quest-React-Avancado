@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { ThemeContext } from '../../../context/themeContext';
-import { Menu } from "../menu";
+import { Menu } from "./menu";
 
 export const MainBackground = (props) => {
     const { filter = '', byName = '' } = props;
